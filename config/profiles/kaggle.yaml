@@ -1,0 +1,27 @@
+gbm:
+  num_boost_round: 1200
+  num_leaves: 127
+  early_stopping_rounds: 60
+
+nn:
+  hidden_dim: 256
+  num_layers: 2
+  pretrain_epochs: 50
+  finetune_epochs: 60
+  early_stopping_patience: 10
+
+bayesian:
+  chains: 4
+  draws: 1000
+  tune: 1000
+  split_scope: train
+
+simulation:
+  n_sims: 200000
+
+calibration:
+  min_ensemble_weight: 0.10
+
+pipeline:
+  skip_club_pretrain: false
+  time_budget_hours: 8

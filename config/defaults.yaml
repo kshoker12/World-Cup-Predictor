@@ -1,0 +1,81 @@
+elo:
+  initial: 1500
+  k_factor: 20
+  home_advantage: 50
+
+features:
+  form_decay: 0.9
+  form_window: 10
+  rolling_goals_window: 5
+  h2h_decay: 0.85
+
+splits:
+  train_end: "2010-01-01"
+  val_end: "2018-01-01"
+
+gbm:
+  num_boost_round: 500
+  learning_rate: 0.05
+  num_leaves: 31
+  early_stopping_rounds: 50
+
+simulation:
+  n_sims: 10000
+  max_goals: 10
+  dixon_coles_rho: 0.0
+
+calibration:
+  rho_min: -0.2
+  rho_max: 0.1
+  scaling_bounds: [0.5, 2.0]
+  min_ensemble_weight: 0.10
+
+pipeline:
+  skip_club_pretrain: false
+  time_budget_hours: 0
+
+club:
+  data_dir: data/raw/club
+  min_date: "2014-01-01"
+  leagues: []
+  forward_fill_within_league: true
+  understat_leagues:
+    - ENG-Premier League
+    - ESP-La Liga
+    - GER-Bundesliga
+    - ITA-Serie A
+    - FRA-Ligue 1
+  understat_seasons:
+    - "1415"
+    - "1516"
+    - "1617"
+    - "1718"
+    - "1819"
+
+bayesian:
+  min_date: "2000-01-01"
+  chains: 2
+  draws: 500
+  tune: 500
+  target_accept: 0.9
+  random_seed: 42
+  use_in_ensemble: true
+  split_scope: train
+
+nn:
+  seq_len: 10
+  feature_dim: 10
+  hidden_dim: 64
+  num_layers: 1
+  dropout: 0.1
+  pretrain_batch_size: 512
+  pretrain_epochs: 30
+  pretrain_lr: 0.001
+  finetune_batch_size: 256
+  finetune_epochs: 20
+  finetune_lr: 0.0001
+  weight_decay: 0.0001
+  early_stopping_patience: 5
+  device: mps
+  num_workers: 0
+  freeze_encoder_epochs: 0

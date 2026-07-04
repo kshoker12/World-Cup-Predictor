@@ -1,0 +1,17 @@
+year: 2026
+kickoff_date: "2026-07-04"
+mode: knockout_only
+round_of_16:
+  - [Paraguay, France]
+  - [Canada, Morocco]
+  - [Brazil, Norway]
+  - [Mexico, England]
+  - [Spain, Portugal]
+  - [United States, Belgium]
+  - [Argentina, Egypt]
+  - [Switzerland, Colombia]
+quarterfinal_pairings:
+  - [0, 1]
+  - [4, 5]
+  - [2, 3]
+  - [6, 7]

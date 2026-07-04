@@ -1,0 +1,4 @@
+id,date,home_team_name,away_team_name,home_goals,away_goals,league_name,status
+1,2018-01-01,alpha,beta,2,1,EPL,FT
+2,2018-01-08,gamma,delta,0,0,EPL,FT
+3,2018-01-15,alpha,gamma,1,2,EPL,FT

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worldcup-predictor"
+version = "0.1.0"
+description = "Modular soccer prediction framework for World Cup match forecasting"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "pyyaml>=6.0",
+    "lightgbm>=4.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+nn = ["torch>=2.0", "soccerdata>=1.8"]
+bayesian = ["pymc>=5.0", "arviz>=0.16", "matplotlib>=3.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

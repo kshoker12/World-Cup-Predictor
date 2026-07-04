@@ -1,0 +1,49 @@
+date,home_team,away_team,home_score,away_score,tournament,city,country,neutral
+2026-06-12,Paraguay,United States,1,1,FIFA World Cup,Atlanta,United States,TRUE
+2026-06-12,France,Belgium,2,0,FIFA World Cup,Los Angeles,United States,TRUE
+2026-06-13,Canada,Switzerland,2,1,FIFA World Cup,Toronto,Canada,TRUE
+2026-06-13,Morocco,Colombia,1,1,FIFA World Cup,Monterrey,Mexico,TRUE
+2026-06-14,Brazil,Spain,2,2,FIFA World Cup,Dallas,United States,TRUE
+2026-06-14,Norway,Portugal,1,0,FIFA World Cup,Seattle,United States,TRUE
+2026-06-15,Mexico,Egypt,3,1,FIFA World Cup,Mexico City,Mexico,TRUE
+2026-06-15,England,Argentina,1,2,FIFA World Cup,Miami,United States,TRUE
+2026-06-16,Paraguay,Canada,0,2,FIFA World Cup,Houston,United States,TRUE
+2026-06-16,France,Morocco,1,0,FIFA World Cup,Philadelphia,United States,TRUE
+2026-06-17,United States,Colombia,2,1,FIFA World Cup,Arlington,United States,TRUE
+2026-06-17,Belgium,Switzerland,1,1,FIFA World Cup,Boston,United States,TRUE
+2026-06-18,Brazil,Norway,3,0,FIFA World Cup,New York,United States,TRUE
+2026-06-18,Spain,Portugal,2,1,FIFA World Cup,Arlington,United States,TRUE
+2026-06-19,Mexico,England,1,1,FIFA World Cup,Guadalajara,Mexico,TRUE
+2026-06-19,Egypt,Argentina,0,2,FIFA World Cup,Atlanta,United States,TRUE
+2026-06-20,Paraguay,Colombia,2,0,FIFA World Cup,Kansas City,United States,TRUE
+2026-06-20,France,Switzerland,2,1,FIFA World Cup,Vancouver,Canada,TRUE
+2026-06-21,Canada,United States,1,0,FIFA World Cup,Vancouver,Canada,TRUE
+2026-06-21,Morocco,Belgium,2,2,FIFA World Cup,Monterrey,Mexico,TRUE
+2026-06-22,Brazil,Portugal,1,0,FIFA World Cup,Seattle,United States,TRUE
+2026-06-22,Norway,Spain,1,2,FIFA World Cup,San Francisco,United States,TRUE
+2026-06-23,Mexico,Argentina,0,1,FIFA World Cup,Mexico City,Mexico,TRUE
+2026-06-23,England,Egypt,2,0,FIFA World Cup,Boston,United States,TRUE
+2026-06-24,Paraguay,Belgium,1,2,FIFA World Cup,Chicago,United States,TRUE
+2026-06-24,France,Colombia,3,1,FIFA World Cup,Miami,United States,TRUE
+2026-06-25,Canada,Morocco,0,1,FIFA World Cup,Toronto,Canada,TRUE
+2026-06-25,United States,Switzerland,2,0,FIFA World Cup,Los Angeles,United States,TRUE
+2026-06-26,Brazil,Spain,1,1,FIFA World Cup,Dallas,United States,TRUE
+2026-06-26,Norway,Portugal,2,1,FIFA World Cup,Denver,United States,TRUE
+2026-06-27,Mexico,Egypt,2,0,FIFA World Cup,Monterrey,Mexico,TRUE
+2026-06-27,England,Argentina,1,1,FIFA World Cup,Philadelphia,United States,TRUE
+2026-06-29,Germany,Paraguay,1,2,FIFA World Cup,Philadelphia,United States,TRUE
+2026-06-29,Brazil,Japan,2,1,FIFA World Cup,Dallas,United States,TRUE
+2026-06-30,France,Sweden,3,0,FIFA World Cup,New York,United States,TRUE
+2026-06-30,Ivory Coast,Norway,1,2,FIFA World Cup,Seattle,United States,TRUE
+2026-06-30,Mexico,Ecuador,2,0,FIFA World Cup,Monterrey,Mexico,TRUE
+2026-07-01,England,DR Congo,2,1,FIFA World Cup,Atlanta,United States,TRUE
+2026-07-01,United States,Bosnia and Herzegovina,2,0,FIFA World Cup,Seattle,United States,TRUE
+2026-07-01,Belgium,Senegal,3,2,FIFA World Cup,Los Angeles,United States,TRUE
+2026-07-02,Portugal,Croatia,2,1,FIFA World Cup,Toronto,Canada,TRUE
+2026-07-02,Spain,Austria,3,0,FIFA World Cup,Arlington,United States,TRUE
+2026-07-02,Switzerland,Algeria,2,0,FIFA World Cup,Vancouver,Canada,TRUE
+2026-07-02,Argentina,Cape Verde,3,2,FIFA World Cup,Miami,United States,TRUE
+2026-07-03,Colombia,Ghana,1,0,FIFA World Cup,Kansas City,United States,TRUE
+2026-07-03,Australia,Egypt,1,2,FIFA World Cup,Dallas,United States,TRUE
+2026-07-03,Canada,South Africa,1,0,FIFA World Cup,Vancouver,Canada,TRUE
+2026-07-03,Morocco,Netherlands,3,2,FIFA World Cup,Monterrey,Mexico,TRUE

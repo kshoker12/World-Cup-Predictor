@@ -1,0 +1,11 @@
+# Maps variant names to canonical team names for Elo continuity.
+aliases:
+  "Czech Republic": "Czechia"
+  "IR Iran": "Iran"
+  "Korea Republic": "South Korea"
+  "Korea DPR": "North Korea"
+  "USA": "United States"
+  "Côte d'Ivoire": "Ivory Coast"
+  "Cabo Verde": "Cape Verde"
+  "Chinese Taipei": "Taiwan"
+  "Turkey": "Türkiye"
