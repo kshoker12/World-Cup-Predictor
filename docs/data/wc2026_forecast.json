@@ -1,1298 +1,1301 @@
 {
-  "n_sims": 50000,
-  "champion_probs": {
-    "Argentina": 0.17546,
-    "Belgium": 0.01878,
-    "Brazil": 0.16602,
-    "Canada": 0.00596,
-    "Colombia": 0.01236,
-    "Egypt": 0.00386,
-    "England": 0.05252,
-    "France": 0.23378,
-    "Mexico": 0.03026,
-    "Morocco": 0.03836,
-    "Norway": 0.0128,
-    "Paraguay": 0.01266,
-    "Portugal": 0.03872,
-    "Spain": 0.17742,
-    "Switzerland": 0.00914,
-    "United States": 0.0119
-  },
-  "advancement_probs": {
-    "Argentina": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.83154,
-      "semi_finals": 0.65226,
-      "final": 0.34266,
-      "champion": 0.17546
-    },
-    "Belgium": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.54786,
-      "semi_finals": 0.15416,
-      "final": 0.0501,
-      "champion": 0.01878
-    },
-    "Brazil": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.75992,
-      "semi_finals": 0.5087,
-      "final": 0.3154,
-      "champion": 0.16602
-    },
-    "Canada": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.34006,
-      "semi_finals": 0.06596,
-      "final": 0.02126,
-      "champion": 0.00596
-    },
-    "Colombia": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.51204,
-      "semi_finals": 0.14876,
-      "final": 0.04386,
-      "champion": 0.01236
-    },
-    "Egypt": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.16846,
-      "semi_finals": 0.07628,
-      "final": 0.0173,
-      "champion": 0.00386
-    },
-    "England": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.54466,
-      "semi_finals": 0.23016,
-      "final": 0.12606,
-      "champion": 0.05252
-    },
-    "France": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.78888,
-      "semi_finals": 0.6132,
-      "final": 0.3928,
-      "champion": 0.23378
-    },
-    "Mexico": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.45534,
-      "semi_finals": 0.16644,
-      "final": 0.08028,
-      "champion": 0.03026
-    },
-    "Morocco": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.65994,
-      "semi_finals": 0.22272,
-      "final": 0.0972,
-      "champion": 0.03836
-    },
-    "Norway": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.24008,
-      "semi_finals": 0.0947,
-      "final": 0.04328,
-      "champion": 0.0128
-    },
-    "Paraguay": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.21112,
-      "semi_finals": 0.09812,
-      "final": 0.03438,
-      "champion": 0.01266
-    },
-    "Portugal": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.31024,
-      "semi_finals": 0.2029,
-      "final": 0.0795,
-      "champion": 0.03872
-    },
-    "Spain": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.68976,
-      "semi_finals": 0.5365,
-      "final": 0.2931,
-      "champion": 0.17742
-    },
-    "Switzerland": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.48796,
-      "semi_finals": 0.1227,
-      "final": 0.03116,
-      "champion": 0.00914
-    },
-    "United States": {
-      "round_of_16": 1.0,
-      "quarter_finals": 0.45214,
-      "semi_finals": 0.10644,
-      "final": 0.03166,
-      "champion": 0.0119
-    }
-  },
-  "match_win_probs": [
-    {
-      "round": "round_of_16",
-      "home": "Argentina",
-      "away": "Egypt",
-      "p_home_win": 0.83154,
-      "p_away_win": 0.16846,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Brazil",
-      "away": "Norway",
-      "p_home_win": 0.75992,
-      "p_away_win": 0.24008,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Canada",
-      "away": "Morocco",
-      "p_home_win": 0.34006,
-      "p_away_win": 0.65994,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Mexico",
-      "away": "England",
-      "p_home_win": 0.45534,
-      "p_away_win": 0.54466,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Paraguay",
-      "away": "France",
-      "p_home_win": 0.21112,
-      "p_away_win": 0.78888,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Spain",
-      "away": "Portugal",
-      "p_home_win": 0.68976,
-      "p_away_win": 0.31024,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "Switzerland",
-      "away": "Colombia",
-      "p_home_win": 0.48796,
-      "p_away_win": 0.51204,
-      "n_sims": 50000
-    },
-    {
-      "round": "round_of_16",
-      "home": "United States",
-      "away": "Belgium",
-      "p_home_win": 0.45214,
-      "p_away_win": 0.54786,
-      "n_sims": 50000
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Argentina",
-      "away": "Colombia",
-      "p_home_win": 0.764852,
-      "p_away_win": 0.235148,
-      "n_sims": 21310
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Argentina",
-      "away": "Switzerland",
-      "p_home_win": 0.804954,
-      "p_away_win": 0.195046,
-      "n_sims": 20267
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Brazil",
-      "away": "England",
-      "p_home_win": 0.639479,
-      "p_away_win": 0.360521,
-      "n_sims": 20745
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Brazil",
-      "away": "Mexico",
-      "p_home_win": 0.705408,
-      "p_away_win": 0.294592,
-      "n_sims": 17251
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Egypt",
-      "away": "Colombia",
-      "p_home_win": 0.434529,
-      "p_away_win": 0.565471,
-      "n_sims": 4292
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Egypt",
-      "away": "Switzerland",
-      "p_home_win": 0.471799,
-      "p_away_win": 0.528201,
-      "n_sims": 4131
-    },
-    {
-      "round": "quarter_finals",
-      "home": "France",
-      "away": "Canada",
-      "p_home_win": 0.869268,
-      "p_away_win": 0.130732,
-      "n_sims": 13455
-    },
-    {
-      "round": "quarter_finals",
-      "home": "France",
-      "away": "Morocco",
-      "p_home_win": 0.729693,
-      "p_away_win": 0.270307,
-      "n_sims": 25989
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Norway",
-      "away": "England",
-      "p_home_win": 0.379007,
-      "p_away_win": 0.620993,
-      "n_sims": 6488
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Norway",
-      "away": "Mexico",
-      "p_home_win": 0.412618,
-      "p_away_win": 0.587382,
-      "n_sims": 5516
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Paraguay",
-      "away": "Canada",
-      "p_home_win": 0.566234,
-      "p_away_win": 0.433766,
-      "n_sims": 3548
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Paraguay",
-      "away": "Morocco",
-      "p_home_win": 0.413385,
-      "p_away_win": 0.586615,
-      "n_sims": 7008
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Portugal",
-      "away": "Belgium",
-      "p_home_win": 0.613747,
-      "p_away_win": 0.386253,
-      "n_sims": 8409
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Portugal",
-      "away": "United States",
-      "p_home_win": 0.701675,
-      "p_away_win": 0.298325,
-      "n_sims": 7103
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Spain",
-      "away": "Belgium",
-      "p_home_win": 0.765065,
-      "p_away_win": 0.234935,
-      "n_sims": 18984
-    },
-    {
-      "round": "quarter_finals",
-      "home": "Spain",
-      "away": "United States",
-      "p_home_win": 0.793408,
-      "p_away_win": 0.206592,
-      "n_sims": 15504
-    },
-    {
-      "round": "semi_finals",
-      "home": "Brazil",
-      "away": "Argentina",
-      "p_home_win": 0.529156,
-      "p_away_win": 0.470844,
-      "n_sims": 16566
-    },
-    {
-      "round": "semi_finals",
-      "home": "Brazil",
-      "away": "Colombia",
-      "p_home_win": 0.769394,
-      "p_away_win": 0.230606,
-      "n_sims": 3777
-    },
-    {
-      "round": "semi_finals",
-      "home": "Brazil",
-      "away": "Egypt",
-      "p_home_win": 0.820619,
-      "p_away_win": 0.179381,
-      "n_sims": 1940
-    },
-    {
-      "round": "semi_finals",
-      "home": "Brazil",
-      "away": "Switzerland",
-      "p_home_win": 0.795051,
-      "p_away_win": 0.204949,
-      "n_sims": 3152
-    },
-    {
-      "round": "semi_finals",
-      "home": "Canada",
-      "away": "Belgium",
-      "p_home_win": 0.427184,
-      "p_away_win": 0.572816,
-      "n_sims": 515
-    },
-    {
-      "round": "semi_finals",
-      "home": "Canada",
-      "away": "Portugal",
-      "p_home_win": 0.341654,
-      "p_away_win": 0.658346,
-      "n_sims": 641
-    },
-    {
-      "round": "semi_finals",
-      "home": "Canada",
-      "away": "Spain",
-      "p_home_win": 0.249149,
-      "p_away_win": 0.750851,
-      "n_sims": 1762
-    },
-    {
-      "round": "semi_finals",
-      "home": "Canada",
-      "away": "United States",
-      "p_home_win": 0.486842,
-      "p_away_win": 0.513158,
-      "n_sims": 380
-    },
-    {
-      "round": "semi_finals",
-      "home": "England",
-      "away": "Argentina",
-      "p_home_win": 0.457101,
-      "p_away_win": 0.542899,
-      "n_sims": 7541
-    },
-    {
-      "round": "semi_finals",
-      "home": "England",
-      "away": "Colombia",
-      "p_home_win": 0.681014,
-      "p_away_win": 0.318986,
-      "n_sims": 1696
-    },
-    {
-      "round": "semi_finals",
-      "home": "England",
-      "away": "Egypt",
-      "p_home_win": 0.759777,
-      "p_away_win": 0.240223,
-      "n_sims": 895
-    },
-    {
-      "round": "semi_finals",
-      "home": "England",
-      "away": "Switzerland",
-      "p_home_win": 0.742006,
-      "p_away_win": 0.257994,
-      "n_sims": 1376
-    },
-    {
-      "round": "semi_finals",
-      "home": "France",
-      "away": "Belgium",
-      "p_home_win": 0.768128,
-      "p_away_win": 0.231872,
-      "n_sims": 4813
-    },
-    {
-      "round": "semi_finals",
-      "home": "France",
-      "away": "Portugal",
-      "p_home_win": 0.707943,
-      "p_away_win": 0.292057,
-      "n_sims": 6194
-    },
-    {
-      "round": "semi_finals",
-      "home": "France",
-      "away": "Spain",
-      "p_home_win": 0.547024,
-      "p_away_win": 0.452976,
-      "n_sims": 16449
-    },
-    {
-      "round": "semi_finals",
-      "home": "France",
-      "away": "United States",
-      "p_home_win": 0.799001,
-      "p_away_win": 0.200999,
-      "n_sims": 3204
-    },
-    {
-      "round": "semi_finals",
-      "home": "Mexico",
-      "away": "Argentina",
-      "p_home_win": 0.387371,
-      "p_away_win": 0.612629,
-      "n_sims": 5416
-    },
-    {
-      "round": "semi_finals",
-      "home": "Mexico",
-      "away": "Colombia",
-      "p_home_win": 0.616178,
-      "p_away_win": 0.383822,
-      "n_sims": 1261
-    },
-    {
-      "round": "semi_finals",
-      "home": "Mexico",
-      "away": "Egypt",
-      "p_home_win": 0.695103,
-      "p_away_win": 0.304897,
-      "n_sims": 633
-    },
-    {
-      "round": "semi_finals",
-      "home": "Mexico",
-      "away": "Switzerland",
-      "p_home_win": 0.690711,
-      "p_away_win": 0.309289,
-      "n_sims": 1012
-    },
-    {
-      "round": "semi_finals",
-      "home": "Morocco",
-      "away": "Belgium",
-      "p_home_win": 0.574803,
-      "p_away_win": 0.425197,
-      "n_sims": 1651
-    },
-    {
-      "round": "semi_finals",
-      "home": "Morocco",
-      "away": "Portugal",
-      "p_home_win": 0.50604,
-      "p_away_win": 0.49396,
-      "n_sims": 2318
-    },
-    {
-      "round": "semi_finals",
-      "home": "Morocco",
-      "away": "Spain",
-      "p_home_win": 0.338238,
-      "p_away_win": 0.661762,
-      "n_sims": 5981
-    },
-    {
-      "round": "semi_finals",
-      "home": "Morocco",
-      "away": "United States",
-      "p_home_win": 0.602867,
-      "p_away_win": 0.397133,
-      "n_sims": 1186
-    },
-    {
-      "round": "semi_finals",
-      "home": "Norway",
-      "away": "Argentina",
-      "p_home_win": 0.378317,
-      "p_away_win": 0.621683,
-      "n_sims": 3090
-    },
-    {
-      "round": "semi_finals",
-      "home": "Norway",
-      "away": "Colombia",
-      "p_home_win": 0.578125,
-      "p_away_win": 0.421875,
-      "n_sims": 704
-    },
-    {
-      "round": "semi_finals",
-      "home": "Norway",
-      "away": "Egypt",
-      "p_home_win": 0.684971,
-      "p_away_win": 0.315029,
-      "n_sims": 346
-    },
-    {
-      "round": "semi_finals",
-      "home": "Norway",
-      "away": "Switzerland",
-      "p_home_win": 0.589916,
-      "p_away_win": 0.410084,
-      "n_sims": 595
-    },
-    {
-      "round": "semi_finals",
-      "home": "Paraguay",
-      "away": "Belgium",
-      "p_home_win": 0.462277,
-      "p_away_win": 0.537723,
-      "n_sims": 729
-    },
-    {
-      "round": "semi_finals",
-      "home": "Paraguay",
-      "away": "Portugal",
-      "p_home_win": 0.396169,
-      "p_away_win": 0.603831,
-      "n_sims": 992
-    },
-    {
-      "round": "semi_finals",
-      "home": "Paraguay",
-      "away": "Spain",
-      "p_home_win": 0.269654,
-      "p_away_win": 0.730346,
-      "n_sims": 2633
-    },
-    {
-      "round": "semi_finals",
-      "home": "Paraguay",
-      "away": "United States",
-      "p_home_win": 0.505435,
-      "p_away_win": 0.494565,
-      "n_sims": 552
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Argentina",
-      "p_home_win": 0.320253,
-      "p_away_win": 0.679747,
-      "n_sims": 790
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Brazil",
-      "p_home_win": 0.322581,
-      "p_away_win": 0.677419,
-      "n_sims": 837
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Colombia",
-      "p_home_win": 0.509434,
-      "p_away_win": 0.490566,
-      "n_sims": 106
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Egypt",
-      "p_home_win": 0.619048,
-      "p_away_win": 0.380952,
-      "n_sims": 42
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "England",
-      "p_home_win": 0.375723,
-      "p_away_win": 0.624277,
-      "n_sims": 346
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Mexico",
-      "p_home_win": 0.471503,
-      "p_away_win": 0.528497,
-      "n_sims": 193
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Norway",
-      "p_home_win": 0.598131,
-      "p_away_win": 0.401869,
-      "n_sims": 107
-    },
-    {
-      "round": "final",
-      "home": "Belgium",
-      "away": "Switzerland",
-      "p_home_win": 0.607143,
-      "p_away_win": 0.392857,
-      "n_sims": 84
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Argentina",
-      "p_home_win": 0.26087,
-      "p_away_win": 0.73913,
-      "n_sims": 368
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Brazil",
-      "p_home_win": 0.21118,
-      "p_away_win": 0.78882,
-      "n_sims": 322
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Colombia",
-      "p_home_win": 0.487179,
-      "p_away_win": 0.512821,
-      "n_sims": 39
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Egypt",
-      "p_home_win": 0.730769,
-      "p_away_win": 0.269231,
-      "n_sims": 26
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "England",
-      "p_home_win": 0.251748,
-      "p_away_win": 0.748252,
-      "n_sims": 143
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Mexico",
-      "p_home_win": 0.3125,
-      "p_away_win": 0.6875,
-      "n_sims": 80
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Norway",
-      "p_home_win": 0.313725,
-      "p_away_win": 0.686275,
-      "n_sims": 51
-    },
-    {
-      "round": "final",
-      "home": "Canada",
-      "away": "Switzerland",
-      "p_home_win": 0.558824,
-      "p_away_win": 0.441176,
-      "n_sims": 34
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Argentina",
-      "p_home_win": 0.539808,
-      "p_away_win": 0.460192,
-      "n_sims": 6682
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Brazil",
-      "p_home_win": 0.529982,
-      "p_away_win": 0.470018,
-      "n_sims": 6187
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Colombia",
-      "p_home_win": 0.798359,
-      "p_away_win": 0.201641,
-      "n_sims": 853
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Egypt",
-      "p_home_win": 0.824675,
-      "p_away_win": 0.175325,
-      "n_sims": 308
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "England",
-      "p_home_win": 0.652733,
-      "p_away_win": 0.347267,
-      "n_sims": 2488
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Mexico",
-      "p_home_win": 0.681088,
-      "p_away_win": 0.318912,
-      "n_sims": 1618
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Norway",
-      "p_home_win": 0.75,
-      "p_away_win": 0.25,
-      "n_sims": 876
-    },
-    {
-      "round": "final",
-      "home": "France",
-      "away": "Switzerland",
-      "p_home_win": 0.772293,
-      "p_away_win": 0.227707,
-      "n_sims": 628
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Argentina",
-      "p_home_win": 0.35893,
-      "p_away_win": 0.64107,
-      "n_sims": 1719
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Brazil",
-      "p_home_win": 0.327177,
-      "p_away_win": 0.672823,
-      "n_sims": 1516
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Colombia",
-      "p_home_win": 0.583732,
-      "p_away_win": 0.416268,
-      "n_sims": 209
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Egypt",
-      "p_home_win": 0.67033,
-      "p_away_win": 0.32967,
-      "n_sims": 91
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "England",
-      "p_home_win": 0.442404,
-      "p_away_win": 0.557596,
-      "n_sims": 599
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Mexico",
-      "p_home_win": 0.449468,
-      "p_away_win": 0.550532,
-      "n_sims": 376
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Norway",
-      "p_home_win": 0.556757,
-      "p_away_win": 0.443243,
-      "n_sims": 185
-    },
-    {
-      "round": "final",
-      "home": "Morocco",
-      "away": "Switzerland",
-      "p_home_win": 0.515152,
-      "p_away_win": 0.484848,
-      "n_sims": 165
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Argentina",
-      "p_home_win": 0.353242,
-      "p_away_win": 0.646758,
-      "n_sims": 586
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Brazil",
-      "p_home_win": 0.302158,
-      "p_away_win": 0.697842,
-      "n_sims": 556
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Colombia",
-      "p_home_win": 0.544304,
-      "p_away_win": 0.455696,
-      "n_sims": 79
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Egypt",
-      "p_home_win": 0.586207,
-      "p_away_win": 0.413793,
-      "n_sims": 29
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "England",
-      "p_home_win": 0.432039,
-      "p_away_win": 0.567961,
-      "n_sims": 206
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Mexico",
-      "p_home_win": 0.374101,
-      "p_away_win": 0.625899,
-      "n_sims": 139
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Norway",
-      "p_home_win": 0.421053,
-      "p_away_win": 0.578947,
-      "n_sims": 76
-    },
-    {
-      "round": "final",
-      "home": "Paraguay",
-      "away": "Switzerland",
-      "p_home_win": 0.520833,
-      "p_away_win": 0.479167,
-      "n_sims": 48
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Argentina",
-      "p_home_win": 0.452684,
-      "p_away_win": 0.547316,
-      "n_sims": 1416
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Brazil",
-      "p_home_win": 0.378512,
-      "p_away_win": 0.621488,
-      "n_sims": 1210
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Colombia",
-      "p_home_win": 0.68254,
-      "p_away_win": 0.31746,
-      "n_sims": 189
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Egypt",
-      "p_home_win": 0.73913,
-      "p_away_win": 0.26087,
-      "n_sims": 69
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "England",
-      "p_home_win": 0.523207,
-      "p_away_win": 0.476793,
-      "n_sims": 474
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Mexico",
-      "p_home_win": 0.628664,
-      "p_away_win": 0.371336,
-      "n_sims": 307
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Norway",
-      "p_home_win": 0.677083,
-      "p_away_win": 0.322917,
-      "n_sims": 192
-    },
-    {
-      "round": "final",
-      "home": "Portugal",
-      "away": "Switzerland",
-      "p_home_win": 0.728814,
-      "p_away_win": 0.271186,
-      "n_sims": 118
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Argentina",
-      "p_home_win": 0.546502,
-      "p_away_win": 0.453498,
-      "n_sims": 5032
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Brazil",
-      "p_home_win": 0.552229,
-      "p_away_win": 0.447771,
-      "n_sims": 4643
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Colombia",
-      "p_home_win": 0.761832,
-      "p_away_win": 0.238168,
-      "n_sims": 655
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Egypt",
-      "p_home_win": 0.82963,
-      "p_away_win": 0.17037,
-      "n_sims": 270
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "England",
-      "p_home_win": 0.659539,
-      "p_away_win": 0.340461,
-      "n_sims": 1824
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Mexico",
-      "p_home_win": 0.693095,
-      "p_away_win": 0.306905,
-      "n_sims": 1173
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Norway",
-      "p_home_win": 0.792937,
-      "p_away_win": 0.207063,
-      "n_sims": 623
-    },
-    {
-      "round": "final",
-      "home": "Spain",
-      "away": "Switzerland",
-      "p_home_win": 0.744828,
-      "p_away_win": 0.255172,
-      "n_sims": 435
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Argentina",
-      "p_home_win": 0.35,
-      "p_away_win": 0.65,
-      "n_sims": 540
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Brazil",
-      "p_home_win": 0.332665,
-      "p_away_win": 0.667335,
-      "n_sims": 499
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Colombia",
-      "p_home_win": 0.444444,
-      "p_away_win": 0.555556,
-      "n_sims": 63
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Egypt",
-      "p_home_win": 0.666667,
-      "p_away_win": 0.333333,
-      "n_sims": 30
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "England",
-      "p_home_win": 0.367713,
-      "p_away_win": 0.632287,
-      "n_sims": 223
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Mexico",
-      "p_home_win": 0.4375,
-      "p_away_win": 0.5625,
-      "n_sims": 128
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Norway",
-      "p_home_win": 0.518519,
-      "p_away_win": 0.481481,
-      "n_sims": 54
-    },
-    {
-      "round": "final",
-      "home": "United States",
-      "away": "Switzerland",
-      "p_home_win": 0.565217,
-      "p_away_win": 0.434783,
-      "n_sims": 46
-    }
-  ],
-  "most_likely_bracket": {
-    "round_of_16": [
-      {
-        "home": "Paraguay",
-        "away": "France",
-        "winner": "France",
-        "score": "2-3"
+    "n_sims": 80000,
+    "champion_probs": {
+      "Argentina": 0.1755375,
+      "Belgium": 0.01855,
+      "Brazil": 0.167225,
+      "Canada": 0.0059625,
+      "Colombia": 0.0125625,
+      "Egypt": 0.0037125,
+      "England": 0.0520375,
+      "France": 0.234075,
+      "Mexico": 0.0299375,
+      "Morocco": 0.0387625,
+      "Norway": 0.0128125,
+      "Paraguay": 0.01235,
+      "Portugal": 0.0381,
+      "Spain": 0.1775125,
+      "Switzerland": 0.0094,
+      "United States": 0.0114625
+    },
+    "advancement_probs": {
+      "Argentina": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.8302875,
+        "semi_finals": 0.6510875,
+        "final": 0.3424,
+        "champion": 0.1755375
       },
-      {
-        "home": "Canada",
-        "away": "Morocco",
-        "winner": "Morocco",
-        "score": "0-1"
+      "Belgium": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.5488,
+        "semi_finals": 0.1534875,
+        "final": 0.049425,
+        "champion": 0.01855
       },
-      {
-        "home": "Brazil",
-        "away": "Norway",
-        "winner": "Brazil",
-        "score": "2-1"
+      "Brazil": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.760275,
+        "semi_finals": 0.509325,
+        "final": 0.3163375,
+        "champion": 0.167225
       },
-      {
-        "home": "Mexico",
-        "away": "England",
-        "winner": "Mexico",
-        "score": "2-1"
+      "Canada": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.338275,
+        "semi_finals": 0.065125,
+        "final": 0.0211125,
+        "champion": 0.0059625
       },
-      {
-        "home": "Spain",
-        "away": "Portugal",
-        "winner": "Spain",
-        "score": "1-0"
+      "Colombia": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.516725,
+        "semi_finals": 0.1494125,
+        "final": 0.044,
+        "champion": 0.0125625
       },
-      {
-        "home": "United States",
-        "away": "Belgium",
-        "winner": "Belgium",
-        "score": "0-1"
+      "Egypt": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.1697125,
+        "semi_finals": 0.0763375,
+        "final": 0.0172625,
+        "champion": 0.0037125
       },
+      "England": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.545725,
+        "semi_finals": 0.2303625,
+        "final": 0.1260875,
+        "champion": 0.0520375
+      },
+      "France": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.7898625,
+        "semi_finals": 0.6119,
+        "final": 0.3918875,
+        "champion": 0.234075
+      },
+      "Mexico": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.454275,
+        "semi_finals": 0.166475,
+        "final": 0.0795875,
+        "champion": 0.0299375
+      },
+      "Morocco": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.661725,
+        "semi_finals": 0.2253,
+        "final": 0.0987375,
+        "champion": 0.0387625
+      },
+      "Norway": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.239725,
+        "semi_finals": 0.0938375,
+        "final": 0.0425125,
+        "champion": 0.0128125
+      },
+      "Paraguay": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.2101375,
+        "semi_finals": 0.097675,
+        "final": 0.0342,
+        "champion": 0.01235
+      },
+      "Portugal": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.310025,
+        "semi_finals": 0.2034875,
+        "final": 0.0791125,
+        "champion": 0.0381
+      },
+      "Spain": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.689975,
+        "semi_finals": 0.5361625,
+        "final": 0.294075,
+        "champion": 0.1775125
+      },
+      "Switzerland": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.483275,
+        "semi_finals": 0.1231625,
+        "final": 0.0318125,
+        "champion": 0.0094
+      },
+      "United States": {
+        "round_of_16": 1.0,
+        "quarter_finals": 0.4512,
+        "semi_finals": 0.1068625,
+        "final": 0.03145,
+        "champion": 0.0114625
+      }
+    },
+    "match_win_probs": [
       {
+        "round": "round_of_16",
         "home": "Argentina",
         "away": "Egypt",
-        "winner": "Argentina",
-        "score": "3-0"
+        "p_home_win": 0.830287,
+        "p_away_win": 0.169713,
+        "n_sims": 80000
       },
       {
+        "round": "round_of_16",
+        "home": "Brazil",
+        "away": "Norway",
+        "p_home_win": 0.760275,
+        "p_away_win": 0.239725,
+        "n_sims": 80000
+      },
+      {
+        "round": "round_of_16",
+        "home": "Canada",
+        "away": "Morocco",
+        "p_home_win": 0.338275,
+        "p_away_win": 0.661725,
+        "n_sims": 80000
+      },
+      {
+        "round": "round_of_16",
+        "home": "Mexico",
+        "away": "England",
+        "p_home_win": 0.454275,
+        "p_away_win": 0.545725,
+        "n_sims": 80000
+      },
+      {
+        "round": "round_of_16",
+        "home": "Paraguay",
+        "away": "France",
+        "p_home_win": 0.210138,
+        "p_away_win": 0.789863,
+        "n_sims": 80000
+      },
+      {
+        "round": "round_of_16",
+        "home": "Spain",
+        "away": "Portugal",
+        "p_home_win": 0.689975,
+        "p_away_win": 0.310025,
+        "n_sims": 80000
+      },
+      {
+        "round": "round_of_16",
         "home": "Switzerland",
         "away": "Colombia",
-        "winner": "Colombia",
-        "score": "1-2"
-      }
-    ],
-    "quarter_finals": [
-      {
-        "home": "France",
-        "away": "Morocco",
-        "winner": "France",
-        "score": "3-2"
+        "p_home_win": 0.483275,
+        "p_away_win": 0.516725,
+        "n_sims": 80000
       },
       {
-        "home": "Spain",
+        "round": "round_of_16",
+        "home": "United States",
         "away": "Belgium",
-        "winner": "Spain",
-        "score": "4-2"
+        "p_home_win": 0.4512,
+        "p_away_win": 0.5488,
+        "n_sims": 80000
       },
       {
+        "round": "quarter_finals",
+        "home": "Argentina",
+        "away": "Colombia",
+        "p_home_win": 0.766041,
+        "p_away_win": 0.233959,
+        "n_sims": 34365
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Argentina",
+        "away": "Switzerland",
+        "p_home_win": 0.803606,
+        "p_away_win": 0.196394,
+        "n_sims": 32058
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Brazil",
+        "away": "England",
+        "p_home_win": 0.64069,
+        "p_away_win": 0.35931,
+        "n_sims": 33261
+      },
+      {
+        "round": "quarter_finals",
         "home": "Brazil",
         "away": "Mexico",
-        "winner": "Brazil",
-        "score": "2-1"
+        "p_home_win": 0.705199,
+        "p_away_win": 0.294801,
+        "n_sims": 27561
       },
       {
-        "home": "Argentina",
+        "round": "quarter_finals",
+        "home": "Egypt",
         "away": "Colombia",
-        "winner": "Argentina",
-        "score": "2-1"
-      }
-    ],
-    "semi_finals": [
-      {
-        "home": "France",
-        "away": "Spain",
-        "winner": "France",
-        "score": "1-0"
+        "p_home_win": 0.438836,
+        "p_away_win": 0.561164,
+        "n_sims": 6973
       },
       {
-        "home": "Brazil",
-        "away": "Argentina",
-        "winner": "Brazil",
-        "score": "5-2"
-      }
-    ],
-    "final": {
-      "home": "France",
-      "away": "Brazil",
-      "winner": "Brazil",
-      "score": "0-1"
-    },
-    "champion": "Brazil"
-  },
-  "most_likely_bracket_count": 72,
-  "most_likely_bracket_fraction": 0.00144,
-  "sample_bracket": {
-    "round_of_16": [
-      {
-        "home": "Paraguay",
-        "away": "France",
-        "winner": "France",
-        "score": "1-3"
+        "round": "quarter_finals",
+        "home": "Egypt",
+        "away": "Switzerland",
+        "p_home_win": 0.461387,
+        "p_away_win": 0.538613,
+        "n_sims": 6604
       },
       {
-        "home": "Canada",
-        "away": "Morocco",
-        "winner": "Canada",
-        "score": "1-0"
-      },
-      {
-        "home": "Brazil",
-        "away": "Norway",
-        "winner": "Brazil",
-        "score": "3-1"
-      },
-      {
-        "home": "Mexico",
-        "away": "England",
-        "winner": "England",
-        "score": "1-4"
-      },
-      {
-        "home": "Spain",
-        "away": "Portugal",
-        "winner": "Spain",
-        "score": "2-1"
-      },
-      {
-        "home": "United States",
-        "away": "Belgium",
-        "winner": "United States",
-        "score": "2-1"
-      },
-      {
-        "home": "Argentina",
-        "away": "Egypt",
-        "winner": "Argentina",
-        "score": "3-1"
-      },
-      {
-        "home": "Switzerland",
-        "away": "Colombia",
-        "winner": "Colombia",
-        "score": "0-1"
-      }
-    ],
-    "quarter_finals": [
-      {
+        "round": "quarter_finals",
         "home": "France",
         "away": "Canada",
-        "winner": "France",
-        "score": "2-0"
+        "p_home_win": 0.869731,
+        "p_away_win": 0.130269,
+        "n_sims": 21448
       },
       {
+        "round": "quarter_finals",
+        "home": "France",
+        "away": "Morocco",
+        "p_home_win": 0.725857,
+        "p_away_win": 0.274143,
+        "n_sims": 41741
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Norway",
+        "away": "England",
+        "p_home_win": 0.376936,
+        "p_away_win": 0.623064,
+        "n_sims": 10397
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Norway",
+        "away": "Mexico",
+        "p_home_win": 0.408609,
+        "p_away_win": 0.591391,
+        "n_sims": 8781
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Paraguay",
+        "away": "Canada",
+        "p_home_win": 0.569647,
+        "p_away_win": 0.430353,
+        "n_sims": 5614
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Paraguay",
+        "away": "Morocco",
+        "p_home_win": 0.412253,
+        "p_away_win": 0.587747,
+        "n_sims": 11197
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Portugal",
+        "away": "Belgium",
+        "p_home_win": 0.617176,
+        "p_away_win": 0.382824,
+        "n_sims": 13612
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Portugal",
+        "away": "United States",
+        "p_home_win": 0.704021,
+        "p_away_win": 0.295979,
+        "n_sims": 11190
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Spain",
+        "away": "Belgium",
+        "p_home_win": 0.766671,
+        "p_away_win": 0.233329,
+        "n_sims": 30292
+      },
+      {
+        "round": "quarter_finals",
         "home": "Spain",
         "away": "United States",
-        "winner": "Spain",
-        "score": "3-1"
+        "p_home_win": 0.789729,
+        "p_away_win": 0.210271,
+        "n_sims": 24906
       },
       {
-        "home": "Brazil",
-        "away": "England",
-        "winner": "Brazil",
-        "score": "2-0"
-      },
-      {
-        "home": "Argentina",
-        "away": "Colombia",
-        "winner": "Argentina",
-        "score": "3-0"
-      }
-    ],
-    "semi_finals": [
-      {
-        "home": "France",
-        "away": "Spain",
-        "winner": "Spain",
-        "score": "1-2"
-      },
-      {
+        "round": "semi_finals",
         "home": "Brazil",
         "away": "Argentina",
-        "winner": "Brazil",
-        "score": "1-0"
+        "p_home_win": 0.530422,
+        "p_away_win": 0.469578,
+        "n_sims": 26428
+      },
+      {
+        "round": "semi_finals",
+        "home": "Brazil",
+        "away": "Colombia",
+        "p_home_win": 0.77099,
+        "p_away_win": 0.22901,
+        "n_sims": 6122
+      },
+      {
+        "round": "semi_finals",
+        "home": "Brazil",
+        "away": "Egypt",
+        "p_home_win": 0.820472,
+        "p_away_win": 0.179528,
+        "n_sims": 3136
+      },
+      {
+        "round": "semi_finals",
+        "home": "Brazil",
+        "away": "Switzerland",
+        "p_home_win": 0.789723,
+        "p_away_win": 0.210277,
+        "n_sims": 5060
+      },
+      {
+        "round": "semi_finals",
+        "home": "Canada",
+        "away": "Belgium",
+        "p_home_win": 0.425659,
+        "p_away_win": 0.574341,
+        "n_sims": 834
+      },
+      {
+        "round": "semi_finals",
+        "home": "Canada",
+        "away": "Portugal",
+        "p_home_win": 0.36583,
+        "p_away_win": 0.63417,
+        "n_sims": 1036
+      },
+      {
+        "round": "semi_finals",
+        "home": "Canada",
+        "away": "Spain",
+        "p_home_win": 0.242754,
+        "p_away_win": 0.757246,
+        "n_sims": 2760
+      },
+      {
+        "round": "semi_finals",
+        "home": "Canada",
+        "away": "United States",
+        "p_home_win": 0.491379,
+        "p_away_win": 0.508621,
+        "n_sims": 580
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Argentina",
+        "p_home_win": 0.458406,
+        "p_away_win": 0.541594,
+        "n_sims": 12081
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Colombia",
+        "p_home_win": 0.675229,
+        "p_away_win": 0.324771,
+        "n_sims": 2725
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Egypt",
+        "p_home_win": 0.772727,
+        "p_away_win": 0.227273,
+        "n_sims": 1386
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Switzerland",
+        "p_home_win": 0.732231,
+        "p_away_win": 0.267769,
+        "n_sims": 2237
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "Belgium",
+        "p_home_win": 0.77479,
+        "p_away_win": 0.22521,
+        "n_sims": 7624
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "Portugal",
+        "p_home_win": 0.71071,
+        "p_away_win": 0.28929,
+        "n_sims": 9907
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "Spain",
+        "p_home_win": 0.543737,
+        "p_away_win": 0.456263,
+        "n_sims": 26248
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "United States",
+        "p_home_win": 0.798569,
+        "p_away_win": 0.201431,
+        "n_sims": 5173
+      },
+      {
+        "round": "semi_finals",
+        "home": "Mexico",
+        "away": "Argentina",
+        "p_home_win": 0.382809,
+        "p_away_win": 0.617191,
+        "n_sims": 8644
+      },
+      {
+        "round": "semi_finals",
+        "home": "Mexico",
+        "away": "Colombia",
+        "p_home_win": 0.611771,
+        "p_away_win": 0.388229,
+        "n_sims": 2022
+      },
+      {
+        "round": "semi_finals",
+        "home": "Mexico",
+        "away": "Egypt",
+        "p_home_win": 0.680352,
+        "p_away_win": 0.319648,
+        "n_sims": 1023
+      },
+      {
+        "round": "semi_finals",
+        "home": "Mexico",
+        "away": "Switzerland",
+        "p_home_win": 0.690608,
+        "p_away_win": 0.309392,
+        "n_sims": 1629
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "Belgium",
+        "p_home_win": 0.571965,
+        "p_away_win": 0.428035,
+        "n_sims": 2661
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "Portugal",
+        "p_home_win": 0.502936,
+        "p_away_win": 0.497064,
+        "n_sims": 3746
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "Spain",
+        "p_home_win": 0.340848,
+        "p_away_win": 0.659152,
+        "n_sims": 9670
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "United States",
+        "p_home_win": 0.614792,
+        "p_away_win": 0.385208,
+        "n_sims": 1947
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Argentina",
+        "p_home_win": 0.370896,
+        "p_away_win": 0.629104,
+        "n_sims": 4934
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Colombia",
+        "p_home_win": 0.586716,
+        "p_away_win": 0.413284,
+        "n_sims": 1084
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Egypt",
+        "p_home_win": 0.686833,
+        "p_away_win": 0.313167,
+        "n_sims": 562
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Switzerland",
+        "p_home_win": 0.592233,
+        "p_away_win": 0.407767,
+        "n_sims": 927
+      },
+      {
+        "round": "semi_finals",
+        "home": "Paraguay",
+        "away": "Belgium",
+        "p_home_win": 0.466379,
+        "p_away_win": 0.533621,
+        "n_sims": 1160
+      },
+      {
+        "round": "semi_finals",
+        "home": "Paraguay",
+        "away": "Portugal",
+        "p_home_win": 0.406289,
+        "p_away_win": 0.593711,
+        "n_sims": 1590
+      },
+      {
+        "round": "semi_finals",
+        "home": "Paraguay",
+        "away": "Spain",
+        "p_home_win": 0.267853,
+        "p_away_win": 0.732147,
+        "n_sims": 4215
+      },
+      {
+        "round": "semi_finals",
+        "home": "Paraguay",
+        "away": "United States",
+        "p_home_win": 0.4947,
+        "p_away_win": 0.5053,
+        "n_sims": 849
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Argentina",
+        "p_home_win": 0.332809,
+        "p_away_win": 0.667191,
+        "n_sims": 1271
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Brazil",
+        "p_home_win": 0.310371,
+        "p_away_win": 0.689629,
+        "n_sims": 1321
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Colombia",
+        "p_home_win": 0.519337,
+        "p_away_win": 0.480663,
+        "n_sims": 181
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Egypt",
+        "p_home_win": 0.693548,
+        "p_away_win": 0.306452,
+        "n_sims": 62
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "England",
+        "p_home_win": 0.391555,
+        "p_away_win": 0.608445,
+        "n_sims": 521
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Mexico",
+        "p_home_win": 0.448052,
+        "p_away_win": 0.551948,
+        "n_sims": 308
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Norway",
+        "p_home_win": 0.59375,
+        "p_away_win": 0.40625,
+        "n_sims": 160
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Switzerland",
+        "p_home_win": 0.592308,
+        "p_away_win": 0.407692,
+        "n_sims": 130
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Argentina",
+        "p_home_win": 0.244288,
+        "p_away_win": 0.755712,
+        "n_sims": 569
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Brazil",
+        "p_home_win": 0.232176,
+        "p_away_win": 0.767824,
+        "n_sims": 547
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Colombia",
+        "p_home_win": 0.485714,
+        "p_away_win": 0.514286,
+        "n_sims": 70
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Egypt",
+        "p_home_win": 0.648649,
+        "p_away_win": 0.351351,
+        "n_sims": 37
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "England",
+        "p_home_win": 0.295154,
+        "p_away_win": 0.704846,
+        "n_sims": 227
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Mexico",
+        "p_home_win": 0.327869,
+        "p_away_win": 0.672131,
+        "n_sims": 122
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Norway",
+        "p_home_win": 0.318182,
+        "p_away_win": 0.681818,
+        "n_sims": 66
+      },
+      {
+        "round": "final",
+        "home": "Canada",
+        "away": "Switzerland",
+        "p_home_win": 0.490196,
+        "p_away_win": 0.509804,
+        "n_sims": 51
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Argentina",
+        "p_home_win": 0.542552,
+        "p_away_win": 0.457448,
+        "n_sims": 10681
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Brazil",
+        "p_home_win": 0.532451,
+        "p_away_win": 0.467549,
+        "n_sims": 9969
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Colombia",
+        "p_home_win": 0.790215,
+        "p_away_win": 0.209785,
+        "n_sims": 1349
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Egypt",
+        "p_home_win": 0.832016,
+        "p_away_win": 0.167984,
+        "n_sims": 506
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "England",
+        "p_home_win": 0.658401,
+        "p_away_win": 0.341599,
+        "n_sims": 3952
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Mexico",
+        "p_home_win": 0.686474,
+        "p_away_win": 0.313526,
+        "n_sims": 2558
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Norway",
+        "p_home_win": 0.756315,
+        "p_away_win": 0.243685,
+        "n_sims": 1346
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Switzerland",
+        "p_home_win": 0.767677,
+        "p_away_win": 0.232323,
+        "n_sims": 990
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Argentina",
+        "p_home_win": 0.34904,
+        "p_away_win": 0.65096,
+        "n_sims": 2759
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Brazil",
+        "p_home_win": 0.334537,
+        "p_away_win": 0.665463,
+        "n_sims": 2493
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Colombia",
+        "p_home_win": 0.558739,
+        "p_away_win": 0.441261,
+        "n_sims": 349
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Egypt",
+        "p_home_win": 0.680556,
+        "p_away_win": 0.319444,
+        "n_sims": 144
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "England",
+        "p_home_win": 0.421712,
+        "p_away_win": 0.578288,
+        "n_sims": 958
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Mexico",
+        "p_home_win": 0.45799,
+        "p_away_win": 0.54201,
+        "n_sims": 607
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Norway",
+        "p_home_win": 0.567901,
+        "p_away_win": 0.432099,
+        "n_sims": 324
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Switzerland",
+        "p_home_win": 0.54717,
+        "p_away_win": 0.45283,
+        "n_sims": 265
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Argentina",
+        "p_home_win": 0.337998,
+        "p_away_win": 0.662002,
+        "n_sims": 929
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Brazil",
+        "p_home_win": 0.297297,
+        "p_away_win": 0.702703,
+        "n_sims": 888
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Colombia",
+        "p_home_win": 0.560345,
+        "p_away_win": 0.439655,
+        "n_sims": 116
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Egypt",
+        "p_home_win": 0.666667,
+        "p_away_win": 0.333333,
+        "n_sims": 45
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "England",
+        "p_home_win": 0.42236,
+        "p_away_win": 0.57764,
+        "n_sims": 322
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Mexico",
+        "p_home_win": 0.359649,
+        "p_away_win": 0.640351,
+        "n_sims": 228
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Norway",
+        "p_home_win": 0.438462,
+        "p_away_win": 0.561538,
+        "n_sims": 130
+      },
+      {
+        "round": "final",
+        "home": "Paraguay",
+        "away": "Switzerland",
+        "p_home_win": 0.512821,
+        "p_away_win": 0.487179,
+        "n_sims": 78
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Argentina",
+        "p_home_win": 0.446381,
+        "p_away_win": 0.553619,
+        "n_sims": 2238
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Brazil",
+        "p_home_win": 0.382474,
+        "p_away_win": 0.617526,
+        "n_sims": 1940
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Colombia",
+        "p_home_win": 0.658537,
+        "p_away_win": 0.341463,
+        "n_sims": 287
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Egypt",
+        "p_home_win": 0.722222,
+        "p_away_win": 0.277778,
+        "n_sims": 108
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "England",
+        "p_home_win": 0.524611,
+        "p_away_win": 0.475389,
+        "n_sims": 772
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Mexico",
+        "p_home_win": 0.610766,
+        "p_away_win": 0.389234,
+        "n_sims": 483
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Norway",
+        "p_home_win": 0.655405,
+        "p_away_win": 0.344595,
+        "n_sims": 296
+      },
+      {
+        "round": "final",
+        "home": "Portugal",
+        "away": "Switzerland",
+        "p_home_win": 0.712195,
+        "p_away_win": 0.287805,
+        "n_sims": 205
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Argentina",
+        "p_home_win": 0.548164,
+        "p_away_win": 0.451836,
+        "n_sims": 8087
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Brazil",
+        "p_home_win": 0.543457,
+        "p_away_win": 0.456543,
+        "n_sims": 7329
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Colombia",
+        "p_home_win": 0.771107,
+        "p_away_win": 0.228893,
+        "n_sims": 1066
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Egypt",
+        "p_home_win": 0.832184,
+        "p_away_win": 0.167816,
+        "n_sims": 435
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "England",
+        "p_home_win": 0.658977,
+        "p_away_win": 0.341023,
+        "n_sims": 2991
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Mexico",
+        "p_home_win": 0.695769,
+        "p_away_win": 0.304231,
+        "n_sims": 1867
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Norway",
+        "p_home_win": 0.768305,
+        "p_away_win": 0.231695,
+        "n_sims": 997
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Switzerland",
+        "p_home_win": 0.749337,
+        "p_away_win": 0.250663,
+        "n_sims": 754
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Argentina",
+        "p_home_win": 0.329837,
+        "p_away_win": 0.670163,
+        "n_sims": 858
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Brazil",
+        "p_home_win": 0.318293,
+        "p_away_win": 0.681707,
+        "n_sims": 820
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Colombia",
+        "p_home_win": 0.490196,
+        "p_away_win": 0.509804,
+        "n_sims": 102
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Egypt",
+        "p_home_win": 0.636364,
+        "p_away_win": 0.363636,
+        "n_sims": 44
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "England",
+        "p_home_win": 0.392442,
+        "p_away_win": 0.607558,
+        "n_sims": 344
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Mexico",
+        "p_home_win": 0.43299,
+        "p_away_win": 0.56701,
+        "n_sims": 194
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Norway",
+        "p_home_win": 0.5,
+        "p_away_win": 0.5,
+        "n_sims": 82
+      },
+      {
+        "round": "final",
+        "home": "United States",
+        "away": "Switzerland",
+        "p_home_win": 0.486111,
+        "p_away_win": 0.513889,
+        "n_sims": 72
       }
     ],
-    "final": {
-      "home": "Spain",
-      "away": "Brazil",
-      "winner": "Brazil",
-      "score": "1-2"
+    "most_likely_bracket": {
+      "round_of_16": [
+        {
+          "home": "Paraguay",
+          "away": "France",
+          "winner": "France",
+          "score": "0-1"
+        },
+        {
+          "home": "Canada",
+          "away": "Morocco",
+          "winner": "Morocco",
+          "score": "1-2"
+        },
+        {
+          "home": "Brazil",
+          "away": "Norway",
+          "winner": "Brazil",
+          "score": "3-1"
+        },
+        {
+          "home": "Mexico",
+          "away": "England",
+          "winner": "England",
+          "score": "1-3"
+        },
+        {
+          "home": "Spain",
+          "away": "Portugal",
+          "winner": "Spain",
+          "score": "2-1"
+        },
+        {
+          "home": "United States",
+          "away": "Belgium",
+          "winner": "Belgium",
+          "score": "1-3"
+        },
+        {
+          "home": "Argentina",
+          "away": "Egypt",
+          "winner": "Argentina",
+          "score": "2-1"
+        },
+        {
+          "home": "Switzerland",
+          "away": "Colombia",
+          "winner": "Switzerland",
+          "score": "3-1"
+        }
+      ],
+      "quarter_finals": [
+        {
+          "home": "France",
+          "away": "Morocco",
+          "winner": "France",
+          "score": "3-0"
+        },
+        {
+          "home": "Spain",
+          "away": "Belgium",
+          "winner": "Spain",
+          "score": "2-1"
+        },
+        {
+          "home": "Brazil",
+          "away": "England",
+          "winner": "Brazil",
+          "score": "3-0"
+        },
+        {
+          "home": "Argentina",
+          "away": "Switzerland",
+          "winner": "Argentina",
+          "score": "2-1"
+        }
+      ],
+      "semi_finals": [
+        {
+          "home": "France",
+          "away": "Spain",
+          "winner": "France",
+          "score": "4-0"
+        },
+        {
+          "home": "Brazil",
+          "away": "Argentina",
+          "winner": "Brazil",
+          "score": "1-0"
+        }
+      ],
+      "final": {
+        "home": "France",
+        "away": "Brazil",
+        "winner": "France",
+        "score": "2-1"
+      },
+      "champion": "France"
     },
-    "champion": "Brazil"
-  },
-  "kickoff_date": "2026-07-04"
-}
+    "most_likely_bracket_count": 120,
+    "most_likely_bracket_fraction": 0.0015,
+    "sample_bracket": {
+      "round_of_16": [
+        {
+          "home": "Paraguay",
+          "away": "France",
+          "winner": "France",
+          "score": "1-3"
+        },
+        {
+          "home": "Canada",
+          "away": "Morocco",
+          "winner": "Canada",
+          "score": "1-0"
+        },
+        {
+          "home": "Brazil",
+          "away": "Norway",
+          "winner": "Brazil",
+          "score": "3-1"
+        },
+        {
+          "home": "Mexico",
+          "away": "England",
+          "winner": "England",
+          "score": "1-4"
+        },
+        {
+          "home": "Spain",
+          "away": "Portugal",
+          "winner": "Spain",
+          "score": "2-1"
+        },
+        {
+          "home": "United States",
+          "away": "Belgium",
+          "winner": "United States",
+          "score": "2-1"
+        },
+        {
+          "home": "Argentina",
+          "away": "Egypt",
+          "winner": "Argentina",
+          "score": "3-1"
+        },
+        {
+          "home": "Switzerland",
+          "away": "Colombia",
+          "winner": "Colombia",
+          "score": "0-1"
+        }
+      ],
+      "quarter_finals": [
+        {
+          "home": "France",
+          "away": "Canada",
+          "winner": "France",
+          "score": "2-0"
+        },
+        {
+          "home": "Spain",
+          "away": "United States",
+          "winner": "Spain",
+          "score": "3-1"
+        },
+        {
+          "home": "Brazil",
+          "away": "England",
+          "winner": "Brazil",
+          "score": "2-0"
+        },
+        {
+          "home": "Argentina",
+          "away": "Colombia",
+          "winner": "Argentina",
+          "score": "3-0"
+        }
+      ],
+      "semi_finals": [
+        {
+          "home": "France",
+          "away": "Spain",
+          "winner": "Spain",
+          "score": "1-2"
+        },
+        {
+          "home": "Brazil",
+          "away": "Argentina",
+          "winner": "Brazil",
+          "score": "1-0"
+        }
+      ],
+      "final": {
+        "home": "Spain",
+        "away": "Brazil",
+        "winner": "Brazil",
+        "score": "1-2"
+      },
+      "champion": "Brazil"
+    },
+    "kickoff_date": "2026-07-04",
+    "tournament_config": "/kaggle/working/WorldCupPredictor/config/tournaments/world_cup_2026_knockout.yaml",
+    "simulation_mode": "knockout_only",
+    "elapsed_seconds": 29960.99
+  }
