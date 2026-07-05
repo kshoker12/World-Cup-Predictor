@@ -83,12 +83,12 @@ python scripts/run_calibration_backtest_2022.py
 python scripts/run_calibration_backtest_2018.py --profile fast --sims 200
 
 # On Kaggle after overnight run (models in /kaggle/working/models)
-python scripts/run_calibration_backtest_2022.py --models-dir /kaggle/working/models
+python scripts/run_calibration_backtest_2022.py --models-dir output/
 ```
 
 Writes `wc2018_calibration_backtest.json` / `wc2022_calibration_backtest.json` with champion probs, advancement probs, `P(actual champion)`, multiclass Brier, and log score.
 
-Simulates full 32-team World Cup (8×4 groups, FIFA knockout bracket) using Monte Carlo. Outputs champion probabilities.
+By default uses **knockout-only** simulation (actual R16 bracket, same `KnockoutSimulator` engine as the WC 2026 forecast — ~5h for 50k sims on GPU). Pass `--full-tournament` for the slower group-stage + knockout path (~27h for 50k).
 
 ### Run forecast
 
@@ -322,18 +322,58 @@ python scripts/generate_kaggle_notebook.py
 | Notebook | Purpose |
 |----------|---------|
 | `kaggle_wc2026.ipynb` | Train models + WC 2026 knockout forecast |
-| `kaggle_calibration_backtest_2018.ipynb` | Robust MC backtest vs France 2018 |
-| `kaggle_calibration_backtest_2022.ipynb` | Robust MC backtest vs Argentina 2022 |
+| `kaggle_wc2026_forecast.ipynb` | **Forecast only** — load models from `soccer-train`, run 200k MC (no training) |
+| `kaggle_calibration_backtest_2018.ipynb` | Knockout-only MC backtest vs France 2018 (same engine as forecast) |
+| `kaggle_calibration_backtest_2022.ipynb` | Knockout-only MC backtest vs Argentina 2022 (same engine as forecast) |
 
-WC 2026 notebook cells:
+### Forecast only (models already trained)
+
+Use **`kaggle_wc2026_forecast.ipynb`** when training is done and you only need `wc2026_forecast.json`.
+
+1. Upload your trained artifacts as Kaggle dataset **`soccer-train`** (files from `output/`: `calibration.json`, `gbm_*.txt`, `nn_model.pt`, `bayesian.json`, etc.)
+2. Attach **`soccer-train`** + **`soccer-data`**, GPU ON
+3. Run Cell 1 (setup) → Cell 2 (500 sim smoke) → Cell 3 (**200,000 sims**, fixed)
+
+Do **not** re-run `kaggle_wc2026.ipynb` for forecast — it retrains from scratch (~8h).
+
+Outputs: `/kaggle/working/models/wc2026_forecast.json` and `forecast_report.json`.
+
+Local forecast smoke:
+
+```bash
+python scripts/run_kaggle_forecast.py \
+  --models-dir output/ \
+  --data-root tests/fixtures/flat_soccer_data \
+  --sims 10
+```
+
+### GitHub Pages (live forecast bracket)
+
+**Live URL:** https://kshoker12.github.io/World-Cup-Predictor/
+
+Static files live in [`docs/`](docs/) (`index.html` + `data/wc2026_forecast.json`).
+
+**One-time setup** (repo owner): GitHub → **Settings** → **Pages** → **Build and deployment** → Source: **Deploy from a branch** → Branch **`main`** / folder **`/docs`** → Save. The site is live within ~1 minute.
+
+After a new forecast run, refresh the site:
+
+```bash
+cp output/wc2026_forecast.json docs/data/wc2026_forecast.json
+python scripts/show_forecast.py docs/data/wc2026_forecast.json --html docs/index.html --no-print
+git add docs/ && git commit -m "Update forecast page" && git push
+```
+
+Optional: switch Pages source to **GitHub Actions** and run [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) manually to regenerate HTML in CI before deploy.
+
+WC 2026 training notebook cells:
 
 1. **Setup** — installs pip deps, extracts embedded project code, defines `run_pipeline()` / `show_results()`
 2. **Smoke test** — `run_pipeline(profile="fast")` (~3–15 min)
 3. **Overnight** — `run_pipeline(profile="kaggle")` (~8 h)
 
-Calibration notebooks (run **after** WC 2026 training; need `/kaggle/working/models/`):
+Calibration notebooks (attach **`soccer-train`** or **`output`** + **`soccer-data`**; models staged from your local `output/` upload):
 
-1. **Setup** — same data discovery + `verify_models()` + `run_backtest()` / `show_backtest_results()`
+1. **Setup** — stage models from attached dataset + `run_backtest()` / `show_backtest_results()`
 2. **Smoke** — `run_backtest(profile="fast", n_sims=500)`
 3. **Robust** — `run_backtest(profile="backtest")` (50k sims)
 

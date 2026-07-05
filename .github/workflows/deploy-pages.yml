@@ -1,12 +1,8 @@
 name: Deploy forecast to GitHub Pages
 
+# Optional: use after enabling Pages → Source: GitHub Actions in repo settings.
+# Default setup uses branch deploy (main /docs) — no workflow required.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "docs/**"
-      - "scripts/show_forecast.py"
-      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
 permissions:
