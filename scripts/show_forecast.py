@@ -25,14 +25,17 @@ ADVANCEMENT_COLUMNS = (
     ("quarter_finals", "Make the quarters"),
 )
 
+PATH_ROUNDS_R16 = ("round_of_16", "quarter_finals", "semi_finals")
+PATH_ROUNDS_QF = ("quarter_finals", "semi_finals")
+
 
 def _load(path: Path) -> dict:
     with path.open(encoding="utf-8") as f:
         return json.load(f)
 
 
-def _r16_matches(match_win_probs: list[dict]) -> list[dict]:
-    rows = [r for r in match_win_probs if r.get("round") == "round_of_16"]
+def _round_matches(match_win_probs: list[dict], rnd: str) -> list[dict]:
+    rows = [r for r in match_win_probs if r.get("round") == rnd]
     return sorted(rows, key=lambda r: (r["home"], r["away"]))
 
 
@@ -50,7 +53,34 @@ def _match_prob(
     return None, None
 
 
-def print_report(data: dict) -> None:
+def _is_qf_forecast(data: dict, history: dict | None) -> bool:
+    if data.get("simulation_round") == "quarter_finals":
+        return True
+    if history and history.get("active_round") == "quarter_finals":
+        return True
+    return False
+
+
+def _advancement_columns(data: dict, history: dict | None) -> tuple[tuple[str, str], ...]:
+    if _is_qf_forecast(data, history):
+        return tuple(c for c in ADVANCEMENT_COLUMNS if c[0] != "quarter_finals")
+    return ADVANCEMENT_COLUMNS
+
+
+def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
+    if _is_qf_forecast(data, history):
+        return PATH_ROUNDS_QF
+    return PATH_ROUNDS_R16
+
+
+def _meta_line(data: dict, history: dict | None) -> str:
+    n_sims = data.get("n_sims", 0)
+    if _is_qf_forecast(data, history):
+        return f"Based on {n_sims:,} simulations · Quarter-finals"
+    return f"Based on {n_sims:,} simulated tournaments"
+
+
+def print_report(data: dict, history: dict | None = None) -> None:
     n_sims = data.get("n_sims", 0)
     print("=" * 72)
     print(f"WC 2026 FORECAST — {n_sims:,} simulations")
@@ -63,20 +93,34 @@ def print_report(data: dict) -> None:
         print(f"  {team:20s} {prob:6.2%}  {bar}")
 
     adv = data.get("advancement_probs", {})
+    cols = _advancement_columns(data, history)
     print("\n--- Tournament outlook (top 10) ---")
-    print(f"  {'Team':20s} {'Win':>7s} {'Final':>7s} {'Semis':>7s} {'Quarters':>8s}")
+    header = f"  {'Team':20s}" + "".join(f" {label:>8s}" for _, label in cols)
+    print(header)
     for team in sorted(champ, key=lambda t: -champ[t])[:10]:
         row = adv.get(team, {})
-        print(
-            f"  {team:20s} "
-            f"{row.get('champion', 0):7.1%} "
-            f"{row.get('final', 0):7.1%} "
-            f"{row.get('semi_finals', 0):7.1%} "
-            f"{row.get('quarter_finals', 0):8.1%}"
-        )
+        parts = f"  {team:20s}"
+        for key, _ in cols:
+            parts += f" {row.get(key, 0):8.1%}"
+        print(parts)
 
-    print("\n--- Round of 16 ---")
-    for m in _r16_matches(data.get("match_win_probs", [])):
+    if history:
+        for rnd_entry in history.get("rounds", []):
+            summary = rnd_entry.get("summary", {})
+            print(
+                f"\n--- {rnd_entry.get('label', rnd_entry.get('round'))} "
+                f"({summary.get('correct', 0)}/{summary.get('total', 0)} correct) ---"
+            )
+            for m in rnd_entry.get("results", []):
+                mark = "ok" if m.get("correct") else "miss"
+                print(
+                    f"  {m['home']:18s} vs {m['away']:18s}  "
+                    f"pick: {m['predicted_winner']:18s}  actual: {m['winner']:18s}  [{mark}]"
+                )
+
+    active_round = "quarter_finals" if _is_qf_forecast(data, history) else "round_of_16"
+    print(f"\n--- {ROUND_LABELS[active_round]} ---")
+    for m in _round_matches(data.get("match_win_probs", []), active_round):
         home, away = m["home"], m["away"]
         ph, pa = float(m["p_home_win"]), float(m["p_away_win"])
         fav = home if ph >= pa else away
@@ -89,7 +133,7 @@ def print_report(data: dict) -> None:
     print(
         f"\n--- Most common complete path ({frac:.2%}, n={count}) — illustrative only ---"
     )
-    for rnd in ("round_of_16", "quarter_finals", "semi_finals"):
+    for rnd in _path_rounds(data, history):
         print(f"\n  {ROUND_LABELS[rnd]}")
         for m in br.get(rnd, []):
             ph, pa = _match_prob(mwp, m["home"], m["away"], rnd)
@@ -127,6 +171,33 @@ def _r16_match_html(home: str, away: str, p_home: float, p_away: float) -> str:
     </div>"""
 
 
+def _scored_match_html(
+    home: str,
+    away: str,
+    p_home: float,
+    p_away: float,
+    *,
+    correct: bool,
+    actual_winner: str,
+    score: str,
+) -> str:
+    def cell(name: str, p: float, is_fav: bool) -> str:
+        cls = "team favorite" if is_fav else "team"
+        return (
+            f'<div class="{cls}">{html.escape(name)}'
+            f'<span class="pct">{p:.0%} chance to win</span></div>'
+        )
+
+    fav_home = p_home >= p_away
+    row_cls = "pick-correct" if correct else "pick-wrong"
+    return f"""
+    <div class="match scored {row_cls}">
+      {cell(home, p_home, fav_home)}
+      <div class="vs">vs<div class="actual">{html.escape(score)} → {html.escape(actual_winner)}</div></div>
+      {cell(away, p_away, not fav_home)}
+    </div>"""
+
+
 def _path_match_html(
     home: str,
     away: str,
@@ -148,7 +219,7 @@ def _path_match_html(
     </div>"""
 
 
-def write_html(data: dict, out_path: Path) -> None:
+def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
     n_sims = data.get("n_sims", 0)
     champ_probs = data.get("champion_probs", {})
     adv = data.get("advancement_probs", {})
@@ -156,15 +227,18 @@ def write_html(data: dict, out_path: Path) -> None:
     br = data.get("most_likely_bracket", {})
     frac = float(data.get("most_likely_bracket_fraction", 0))
     count = int(data.get("most_likely_bracket_count", 0))
+    qf_mode = _is_qf_forecast(data, history)
+    adv_cols = _advancement_columns(data, history)
+    path_rounds = _path_rounds(data, history)
 
     top_teams = sorted(champ_probs.items(), key=lambda x: -x[1])[:10]
 
-    outlook_header = "".join(f"<th>{label}</th>" for _, label in ADVANCEMENT_COLUMNS)
+    outlook_header = "".join(f"<th>{label}</th>" for _, label in adv_cols)
     outlook_rows = ""
     for team, _ in top_teams:
         row = adv.get(team, {})
         cells = []
-        for i, (key, _) in enumerate(ADVANCEMENT_COLUMNS):
+        for i, (key, _) in enumerate(adv_cols):
             val = row.get(key, 0)
             if i == 0:
                 cells.append(
@@ -177,18 +251,45 @@ def write_html(data: dict, out_path: Path) -> None:
                 cells.append(f'<td class="num">{val:.1%}</td>')
         outlook_rows += f"<tr><td>{html.escape(team)}</td>{''.join(cells)}</tr>"
 
-    r16_html = "".join(
+    history_sections = ""
+    if history:
+        for rnd_entry in history.get("rounds", []):
+            summary = rnd_entry.get("summary", {})
+            label = rnd_entry.get("label", ROUND_LABELS.get(rnd_entry.get("round", ""), "Results"))
+            hist_sims = rnd_entry.get("n_sims", 0)
+            correct = summary.get("correct", 0)
+            total = summary.get("total", 0)
+            rows_html = "".join(
+                _scored_match_html(
+                    m["home"],
+                    m["away"],
+                    float(m["p_home_win"]),
+                    float(m["p_away_win"]),
+                    correct=bool(m.get("correct")),
+                    actual_winner=m["winner"],
+                    score=m.get("score", ""),
+                )
+                for m in rnd_entry.get("results", [])
+            )
+            history_sections += f"""
+  <h2>{html.escape(label)} predictions</h2>
+  <p class="section-note">From {hist_sims:,} simulations before the round was played. {correct}/{total} correct.</p>
+  <section>{rows_html}</section>"""
+
+    active_round = "quarter_finals" if qf_mode else "round_of_16"
+    active_label = ROUND_LABELS[active_round]
+    match_html = "".join(
         _r16_match_html(
             m["home"],
             m["away"],
             float(m["p_home_win"]),
             float(m["p_away_win"]),
         )
-        for m in _r16_matches(mwp)
+        for m in _round_matches(mwp, active_round)
     )
 
     path_sections: list[str] = []
-    for rnd in ("round_of_16", "quarter_finals", "semi_finals"):
+    for rnd in path_rounds:
         matches = []
         for m in br.get(rnd, []):
             ph, pa = _match_prob(mwp, m["home"], m["away"], rnd)
@@ -210,7 +311,7 @@ def write_html(data: dict, out_path: Path) -> None:
     path_champion = html.escape(str(br.get("champion", "?")))
     path_pct = f"{frac:.2%}"
     path_note = (
-        f"This is the full knockout tree that showed up most often — "
+        f"This is the knockout tree that showed up most often — "
         f"{count:,} of {n_sims:,} runs ({path_pct}). "
         f"Most simulations still play out differently; the table above is the main forecast."
     )
@@ -296,6 +397,20 @@ def write_html(data: dict, out_path: Path) -> None:
       padding: 0.55rem 0;
       border-bottom: 1px solid #2f3336;
     }}
+    .match.scored {{
+      border-radius: 6px;
+      padding: 0.55rem 0.35rem;
+      margin-bottom: 0.25rem;
+      border: 1px solid transparent;
+    }}
+    .match.pick-correct {{
+      background: rgba(0, 186, 124, 0.08);
+      border-color: rgba(0, 186, 124, 0.35);
+    }}
+    .match.pick-wrong {{
+      background: rgba(244, 33, 46, 0.08);
+      border-color: rgba(244, 33, 46, 0.35);
+    }}
     .team {{ padding: 0.35rem 0.5rem; border-radius: 4px; }}
     .team.favorite {{ background: #1a2a3a; font-weight: 600; color: #1d9bf0; }}
     .team.path-winner {{ background: #1d3a2a; font-weight: 600; color: #00ba7c; }}
@@ -307,6 +422,12 @@ def write_html(data: dict, out_path: Path) -> None:
       margin-top: 0.15rem;
     }}
     .vs {{ color: #8899a6; font-size: 0.85rem; text-align: center; min-width: 2rem; }}
+    .vs .actual {{
+      font-size: 0.72rem;
+      color: #8899a6;
+      margin-top: 0.2rem;
+      white-space: nowrap;
+    }}
     .score {{ font-weight: 700; color: #fff; text-align: center; min-width: 3rem; }}
     .path-section {{
       margin-top: 0.5rem;
@@ -336,7 +457,7 @@ def write_html(data: dict, out_path: Path) -> None:
 </head>
 <body>
   <h1>WC 2026 Knockout Forecast</h1>
-  <p class="meta">Based on {n_sims:,} simulated tournaments</p>
+  <p class="meta">{_meta_line(data, history)}</p>
 
   <h2>Who goes how far?</h2>
   <p class="section-note">
@@ -347,9 +468,9 @@ def write_html(data: dict, out_path: Path) -> None:
     <tbody>{outlook_rows}</tbody>
   </table>
 
-  <h2>Round of 16 — who wins each game?</h2>
+  <h2>{active_label} — who wins each game?</h2>
   <p class="section-note">Win chance for each team in this round. Blue = more likely to win.</p>
-  <section>{r16_html}</section>
+  <section>{match_html}</section>
 
   <h2>Most likely path</h2>
   <p class="section-note">{path_note}</p>
@@ -357,6 +478,7 @@ def write_html(data: dict, out_path: Path) -> None:
     {"".join(path_sections)}
     <div class="path-champion">Champion on this path: <strong>{path_champion}</strong></div>
   </section>
+{history_sections}
 
   <p class="footer">
     The model simulates every knockout match thousands of times, picks a scoreline each time,
@@ -376,6 +498,12 @@ def main() -> int:
         default=PROJECT_ROOT / "output" / "wc2026_forecast.json",
     )
     parser.add_argument(
+        "--history",
+        type=Path,
+        default=None,
+        help="Round history JSON (completed rounds + scoring)",
+    )
+    parser.add_argument(
         "--html",
         type=Path,
         default=None,
@@ -389,13 +517,15 @@ def main() -> int:
         return 1
 
     data = _load(args.forecast)
+    history = _load(args.history) if args.history and args.history.exists() else None
+
     if not args.no_print:
-        print_report(data)
+        print_report(data, history)
 
     html_path = args.html
     if html_path is None:
         html_path = args.forecast.with_suffix(".html")
-    write_html(data, html_path)
+    write_html(data, html_path, history)
     print(f"\nHTML report: {html_path.resolve()}")
     return 0
 

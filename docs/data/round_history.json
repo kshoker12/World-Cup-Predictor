@@ -1,0 +1,99 @@
+{
+  "rounds": [
+    {
+      "round": "round_of_16",
+      "label": "Round of 16",
+      "forecast_file": "history/forecast_pre_r16.json",
+      "n_sims": 80000,
+      "completed_at": "2026-07-07",
+      "results": [
+        {
+          "home": "Paraguay",
+          "away": "France",
+          "winner": "France",
+          "score": "0-1",
+          "predicted_winner": "France",
+          "p_home_win": 0.210138,
+          "p_away_win": 0.789863,
+          "correct": true
+        },
+        {
+          "home": "Canada",
+          "away": "Morocco",
+          "winner": "Morocco",
+          "score": "0-3",
+          "predicted_winner": "Morocco",
+          "p_home_win": 0.338275,
+          "p_away_win": 0.661725,
+          "correct": true
+        },
+        {
+          "home": "Brazil",
+          "away": "Norway",
+          "winner": "Norway",
+          "score": "1-2",
+          "predicted_winner": "Brazil",
+          "p_home_win": 0.760275,
+          "p_away_win": 0.239725,
+          "correct": false
+        },
+        {
+          "home": "Mexico",
+          "away": "England",
+          "winner": "England",
+          "score": "2-3",
+          "predicted_winner": "England",
+          "p_home_win": 0.454275,
+          "p_away_win": 0.545725,
+          "correct": true
+        },
+        {
+          "home": "Spain",
+          "away": "Portugal",
+          "winner": "Spain",
+          "score": "1-0",
+          "predicted_winner": "Spain",
+          "p_home_win": 0.689975,
+          "p_away_win": 0.310025,
+          "correct": true
+        },
+        {
+          "home": "United States",
+          "away": "Belgium",
+          "winner": "Belgium",
+          "score": "1-4",
+          "predicted_winner": "Belgium",
+          "p_home_win": 0.4512,
+          "p_away_win": 0.5488,
+          "correct": true
+        },
+        {
+          "home": "Argentina",
+          "away": "Egypt",
+          "winner": "Argentina",
+          "score": "3-2",
+          "predicted_winner": "Argentina",
+          "p_home_win": 0.830287,
+          "p_away_win": 0.169713,
+          "correct": true
+        },
+        {
+          "home": "Switzerland",
+          "away": "Colombia",
+          "winner": "Switzerland",
+          "score": "1-0",
+          "predicted_winner": "Colombia",
+          "p_home_win": 0.483275,
+          "p_away_win": 0.516725,
+          "correct": false
+        }
+      ],
+      "summary": {
+        "correct": 6,
+        "total": 8
+      }
+    }
+  ],
+  "active_round": "quarter_finals",
+  "active_forecast": "wc2026_forecast_qf.json"
+}
