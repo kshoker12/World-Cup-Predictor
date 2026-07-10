@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-07-10T05:23:17.437281+00:00",
+  "split": "test",
+  "n_matches": 8192,
+  "models_dir": "/Users/kshoker/Desktop/projects/WorldCupPredictor/output",
+  "profile": "kaggle",
+  "rho_ensemble": -0.05,
+  "metric_definitions": {
+    "poisson_deviance_total": "Sum of mean Poisson deviances for home and away goals. Primary training loss; lower is better.",
+    "goal_mae": "Average absolute error between predicted \u03bb and actual goals; lower is better.",
+    "wdl_log_loss": "Multiclass log loss for win/draw/loss from Dixon-Coles score grid; lower is better.",
+    "wdl_brier": "Multiclass Brier score for W/D/L probabilities; lower is better.",
+    "outcome_accuracy": "Fraction of matches where argmax W/D/L equals the actual result.",
+    "mean_log_prob_actual": "Mean log probability assigned to the actual W/D/L outcome; higher is better."
+  },
+  "models": {
+    "LightGBM": {
+      "poisson_deviance_total": 2.392992533551573,
+      "poisson_deviance_home": 1.2153757907518894,
+      "poisson_deviance_away": 1.1776167427996838,
+      "goal_mae": 0.9455053967533588,
+      "wdl_log_loss": 0.8754059899801165,
+      "wdl_brier": 0.5140935383433691,
+      "outcome_accuracy": 0.60009765625,
+      "mean_log_prob_actual": -0.8754059899801165
+    },
+    "LSTM": {
+      "poisson_deviance_total": 2.425595854069148,
+      "poisson_deviance_home": 1.236003000809828,
+      "poisson_deviance_away": 1.1895928532593198,
+      "goal_mae": 0.9496120173073516,
+      "wdl_log_loss": 0.9009117861616102,
+      "wdl_brier": 0.5306456726450647,
+      "outcome_accuracy": 0.581298828125,
+      "mean_log_prob_actual": -0.9009117861616102
+    },
+    "Bayesian": {
+      "poisson_deviance_total": 2.6534685760581276,
+      "poisson_deviance_home": 1.3615840635582925,
+      "poisson_deviance_away": 1.291884512499835,
+      "goal_mae": 1.0088247896543945,
+      "wdl_log_loss": 0.9361130015266467,
+      "wdl_brier": 0.5451144828863596,
+      "outcome_accuracy": 0.58056640625,
+      "mean_log_prob_actual": -0.9361130015266467
+    },
+    "Ensemble": {
+      "poisson_deviance_total": 2.351588443353887,
+      "poisson_deviance_home": 1.189954967720111,
+      "poisson_deviance_away": 1.161633475633776,
+      "goal_mae": 0.9340905999847443,
+      "wdl_log_loss": 0.8712698716954195,
+      "wdl_brier": 0.5116260260536314,
+      "outcome_accuracy": 0.6036376953125,
+      "mean_log_prob_actual": -0.8712698716954195
+    },
+    "NaiveMean": {
+      "poisson_deviance_total": 3.1706810019958502,
+      "poisson_deviance_home": 1.6622692195482016,
+      "poisson_deviance_away": 1.5084117824476486,
+      "goal_mae": 1.1259126598471272,
+      "wdl_log_loss": 1.0555465760033542,
+      "wdl_brier": 0.6366643654650945,
+      "outcome_accuracy": 0.4779052734375,
+      "mean_log_prob_actual": -1.0555465760033542
+    }
+  },
+  "ensemble_vs_best_single": {
+    "best_single_model": "LightGBM",
+    "best_single_poisson_deviance": 2.392992533551573,
+    "ensemble_poisson_deviance": 2.351588443353887,
+    "poisson_deviance_improvement_pct": 1.7302222893372798,
+    "wdl_log_loss_improvement_pct": 0.4724800072239637,
+    "outcome_accuracy_improvement_pct": 0.5899104963384866,
+    "mean_log_prob_actual_improvement_pct": -0.4724800072239637
+  }
+}

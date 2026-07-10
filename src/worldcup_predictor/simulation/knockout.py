@@ -31,17 +31,20 @@ _KNOCKOUT_ROUNDS = [
 
 
 def _increment_knockout_cumulative(
-    counts: dict[str, dict[str, int]], team: str, reached: str
+    counts: dict[str, dict[str, int]],
+    team: str,
+    reached: str,
+    rounds: tuple[str, ...],
 ) -> None:
-    for r in _KNOCKOUT_ROUNDS:
+    for r in rounds:
         counts[team][r] += 1
         if r == reached:
             break
 
 
-def _bracket_signature(bracket_path: dict[str, object]) -> str:
+def _bracket_signature(bracket_path: dict[str, object], rounds: tuple[str, ...]) -> str:
     parts: list[str] = []
-    for rnd in ("round_of_16", "quarter_finals", "semi_finals"):
+    for rnd in rounds:
         for match in bracket_path[rnd]:  # type: ignore[index]
             parts.append(f"{match['home']}|{match['away']}|{match['winner']}")
     final = bracket_path["final"]  # type: ignore[index]
@@ -89,7 +92,7 @@ class KnockoutSimulationResult:
 
 
 class KnockoutSimulator:
-    """Monte Carlo simulation starting from fixed Round of 16 pairings."""
+    """Monte Carlo simulation from Round of 16 or a later fixed knockout round."""
 
     def __init__(
         self,
@@ -103,8 +106,18 @@ class KnockoutSimulator:
     ) -> None:
         if not tournament.is_knockout_only:
             raise ValueError("Tournament config must use mode=knockout_only")
-        if not tournament.round_of_16:
-            raise ValueError("round_of_16 fixtures are required")
+        if tournament.starts_at_quarter_finals:
+            if not tournament.quarter_finals:
+                raise ValueError("quarter_finals fixtures are required when start_round=quarter_finals")
+            self._teams = sorted(
+                {team for home, away in tournament.quarter_finals for team in (home, away)}
+            )
+        else:
+            if not tournament.round_of_16:
+                raise ValueError("round_of_16 fixtures are required")
+            self._teams = sorted(
+                {team for home, away in tournament.round_of_16 for team in (home, away)}
+            )
 
         self.predictor = predictor
         self.config = config
@@ -115,9 +128,6 @@ class KnockoutSimulator:
         self.max_goals = config.simulation.max_goals
         self.seed = seed
         self._show_progress = show_progress
-        self._teams = sorted(
-            {team for home, away in tournament.round_of_16 for team in (home, away)}
-        )
 
     def _predict_lambda(
         self, pipeline: MatchPipeline, home: str, away: str
@@ -186,29 +196,63 @@ class KnockoutSimulator:
             fixtures.append((r16_winners[left_idx], r16_winners[right_idx]))
         return fixtures
 
+    def _knockout_match_count(self) -> int:
+        if self.tournament.starts_at_quarter_finals:
+            return 7
+        return 15
+
+    def _initial_advancement(self) -> dict[str, str]:
+        if self.tournament.starts_at_quarter_finals:
+            return {team: "quarter_finals" for team in self._teams}
+        return {team: "round_of_16" for team in self._teams}
+
+    def _empty_bracket_path(self) -> dict[str, object]:
+        if self.tournament.starts_at_quarter_finals:
+            return {"quarter_finals": [], "semi_finals": [], "final": []}
+        return {"round_of_16": [], "quarter_finals": [], "semi_finals": [], "final": []}
+
+    def _bracket_rounds_for_signature(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_quarter_finals:
+            return ("quarter_finals", "semi_finals")
+        return ("round_of_16", "quarter_finals", "semi_finals")
+
+    def _count_rounds(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_quarter_finals:
+            return ("quarter_finals", "semi_finals", "final", "champion")
+        return tuple(_KNOCKOUT_ROUNDS)
+
+    def _match_rounds_to_aggregate(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_quarter_finals:
+            return ("quarter_finals", "semi_finals")
+        return ("round_of_16", "quarter_finals", "semi_finals")
+
     def _simulate_one(
         self, rng: np.random.Generator
     ) -> tuple[str, dict[str, str], dict[str, object]]:
         pipeline = clone_pipeline(self.initial_pipeline)
-        advancement: dict[str, str] = {team: "round_of_16" for team in self._teams}
-        bracket_path: dict[str, object] = {"round_of_16": [], "quarter_finals": [], "semi_finals": [], "final": []}
+        advancement = self._initial_advancement()
+        bracket_path = self._empty_bracket_path()
 
-        r16_results = []
-        for home, away in self.tournament.round_of_16:
-            outcome = self._play_match(pipeline, home, away, rng)
-            r16_results.append((home, away, outcome.winner))
-            advancement[outcome.winner] = "quarter_finals"
-            bracket_path["round_of_16"].append(
-                {
-                    "home": home,
-                    "away": away,
-                    "winner": outcome.winner,
-                    "score": f"{outcome.home_goals}-{outcome.away_goals}",
-                }
-            )
+        if self.tournament.starts_at_quarter_finals:
+            qf = list(self.tournament.quarter_finals)
+        else:
+            r16_results = []
+            for home, away in self.tournament.round_of_16:
+                outcome = self._play_match(pipeline, home, away, rng)
+                r16_results.append((home, away, outcome.winner))
+                advancement[outcome.winner] = "quarter_finals"
+                bracket_path["round_of_16"].append(
+                    {
+                        "home": home,
+                        "away": away,
+                        "winner": outcome.winner,
+                        "score": f"{outcome.home_goals}-{outcome.away_goals}",
+                    }
+                )
 
-        qf_winners = advance_winners(r16_results)
-        qf = self._build_quarterfinals(qf_winners)
+            qf_winners = advance_winners(r16_results)
+            qf = self._build_quarterfinals(qf_winners)
+
         qf_results = []
         for home, away in qf:
             outcome = self._play_match(pipeline, home, away, rng)
@@ -256,14 +300,14 @@ class KnockoutSimulator:
 
     def run(self) -> KnockoutSimulationResult:
         rng = np.random.default_rng(self.seed)
-        rounds = list(_KNOCKOUT_ROUNDS)
+        rounds = self._count_rounds()
         counts: dict[str, dict[str, int]] = {
             t: {r: 0 for r in rounds} for t in self._teams
         }
         sample_bracket: dict[str, object] = {}
         bracket_counts: dict[str, tuple[int, dict[str, object]]] = {}
         match_counts: dict[tuple[str, str, str], dict[str, int]] = {}
-        knockout_matches = 8 + 4 + 2 + 1
+        knockout_matches = self._knockout_match_count()
 
         for sim_idx in progress(
             range(self.n_sims),
@@ -274,14 +318,16 @@ class KnockoutSimulator:
             champion, advancement, bracket_path = self._simulate_one(rng)
             if sim_idx == 0:
                 sample_bracket = bracket_path
-            signature = _bracket_signature(bracket_path)
+            signature = _bracket_signature(
+                bracket_path, self._bracket_rounds_for_signature()
+            )
             prev = bracket_counts.get(signature)
             if prev is None:
                 bracket_counts[signature] = (1, bracket_path)
             else:
                 bracket_counts[signature] = (prev[0] + 1, prev[1])
 
-            for round_name in ("round_of_16", "quarter_finals", "semi_finals"):
+            for round_name in self._match_rounds_to_aggregate():
                 for match in bracket_path[round_name]:  # type: ignore[index]
                     key = _match_key(round_name, match["home"], match["away"])
                     bucket = match_counts.setdefault(
@@ -301,7 +347,7 @@ class KnockoutSimulator:
                 final_bucket["home_wins"] += 1
 
             for team, reached in advancement.items():
-                _increment_knockout_cumulative(counts, team, reached)
+                _increment_knockout_cumulative(counts, team, reached, rounds)
 
         most_likely_bracket: dict[str, object] = sample_bracket
         most_likely_bracket_count = 0

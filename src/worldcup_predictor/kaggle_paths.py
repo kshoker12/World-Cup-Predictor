@@ -2,8 +2,19 @@
 
 from __future__ import annotations
 
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
+
+REQUIRED_MODEL_FILES = (
+    "calibration.json",
+    "gbm_home.txt",
+    "gbm_away.txt",
+    "gbm_meta.json",
+    "nn_model.pt",
+    "nn_meta.json",
+    "bayesian.json",
+)
 
 
 def _first_existing(*paths: Path) -> Path | None:
@@ -196,3 +207,75 @@ class DataLayout:
 
     def has_club_data(self) -> bool:
         return self.understat_parquet() is not None and self.club_dir() is not None
+
+
+def verify_model_artifacts(models_dir: Path) -> list[str]:
+    """Return missing required model filenames under models_dir."""
+    return [
+        name
+        for name in REQUIRED_MODEL_FILES
+        if not (models_dir / name).exists()
+    ]
+
+
+def models_dir_is_complete(models_dir: Path) -> bool:
+    return not verify_model_artifacts(models_dir)
+
+
+def find_kaggle_models_source() -> Path | None:
+    """Locate attached soccer-train dataset (flat model files)."""
+    kaggle_input = Path("/kaggle/input")
+    if not kaggle_input.is_dir():
+        return None
+
+    preferred = (
+        kaggle_input / "soccer-train",
+        kaggle_input / "soccer-train-dataset",
+        kaggle_input / "output",
+        kaggle_input / "output-dataset",
+    )
+    for path in preferred:
+        if path.is_dir() and models_dir_is_complete(path):
+            return path
+
+    for calibration in kaggle_input.rglob("calibration.json"):
+        candidate = calibration.parent
+        if models_dir_is_complete(candidate):
+            return candidate
+    return None
+
+
+def stage_models(source: Path, dest: Path) -> Path:
+    """Copy required model artifacts from source into dest."""
+    missing = verify_model_artifacts(source)
+    if missing:
+        raise FileNotFoundError(f"Missing model files in {source}: {missing}")
+
+    dest.mkdir(parents=True, exist_ok=True)
+    for name in REQUIRED_MODEL_FILES:
+        shutil.copy2(source / name, dest / name)
+
+    for name in ("nn_pretrain.pt", "pipeline_report.json"):
+        src = source / name
+        if src.exists():
+            shutil.copy2(src, dest / name)
+    return dest
+
+
+def resolve_work_models_dir(project_root: Path) -> Path:
+    """Resolve models directory for Kaggle or local runs."""
+    kaggle_working = Path("/kaggle/working")
+    if kaggle_working.exists():
+        models_dir = kaggle_working / "models"
+        if models_dir_is_complete(models_dir):
+            return models_dir
+        source = find_kaggle_models_source()
+        if source is not None:
+            return stage_models(source, models_dir)
+        models_dir.mkdir(parents=True, exist_ok=True)
+        return models_dir
+
+    local = project_root / "output"
+    if models_dir_is_complete(local):
+        return local
+    return project_root / "data" / "models"

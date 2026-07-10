@@ -114,3 +114,98 @@ def test_knockout_simulator_runs(knockout_tournament, default_config):
     assert len(r16_keys) == 8
     for row in result.match_win_probs:
         assert pytest.approx(row["p_home_win"] + row["p_away_win"]) == 1.0
+
+
+@pytest.fixture
+def qf_tournament() -> TournamentConfig:
+    return TournamentConfig(
+        year=2026,
+        kickoff_date=date(2026, 7, 9),
+        mode="knockout_only",
+        start_round="quarter_finals",
+        quarter_finals=(
+            ("Morocco", "France"),
+            ("Belgium", "Spain"),
+            ("Norway", "England"),
+            ("Argentina", "Switzerland"),
+        ),
+    )
+
+
+def test_knockout_simulator_qf_only(qf_tournament, default_config):
+    rng = np.random.default_rng(0)
+    n = 300
+    data = {col: rng.normal(size=n) for col in FEATURE_COLUMNS}
+    data["home_score"] = rng.poisson(1.1, n)
+    data["away_score"] = rng.poisson(1.0, n)
+    data["date"] = [date(2000, 1, 1)] * n
+    data["home_team"] = "X"
+    data["away_team"] = "Y"
+    data["tournament"] = "Friendly"
+    data["neutral"] = False
+    data["split"] = "train"
+    df = pd.DataFrame(data)
+    train_df = df.iloc[:250]
+    val_df = df.iloc[250:]
+    gbm = GBMPredictor(GBMConfig(num_boost_round=10, early_stopping_rounds=3))
+    gbm.fit(train_df, val_df)
+
+    from worldcup_predictor.calibration.artifacts import fit_calibration
+    from worldcup_predictor.calibration.predictor import CalibratedPredictor
+
+    artifacts = fit_calibration(
+        gbm,
+        val_df,
+        default_config.calibration,
+        default_config,
+        max_goals=10,
+    )
+    predictor = CalibratedPredictor(gbm, artifacts, max_goals=10)
+
+    teams = {
+        t for home, away in qf_tournament.quarter_finals for t in (home, away)
+    }
+    historical = pd.DataFrame(
+        [
+            {
+                "date": date(2005, 1, 1),
+                "home_team": team,
+                "away_team": "B",
+                "home_score": 1,
+                "away_score": 0,
+                "tournament": "Friendly",
+                "neutral": True,
+            }
+            for team in teams
+        ]
+    )
+    pipeline = build_initial_pipeline(
+        historical, default_config, qf_tournament.kickoff_date
+    )
+
+    sim = KnockoutSimulator(
+        predictor,
+        default_config,
+        pipeline,
+        qf_tournament,
+        n_sims=10,
+        seed=0,
+        show_progress=False,
+    )
+    result = sim.run()
+
+    assert result.tournament.group_match_count == 0
+    assert result.tournament.knockout_match_count == 7
+    assert set(result.tournament.champion_probs) == teams
+    assert pytest.approx(sum(result.tournament.champion_probs.values())) == 1.0
+    r16_rows = [
+        row for row in result.match_win_probs if row["round"] == "round_of_16"
+    ]
+    assert r16_rows == []
+    qf_keys = {
+        (row["home"], row["away"])
+        for row in result.match_win_probs
+        if row["round"] == "quarter_finals"
+    }
+    assert len(qf_keys) == 4
+    assert "round_of_16" not in result.most_likely_bracket

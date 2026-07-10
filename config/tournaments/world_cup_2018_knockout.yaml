@@ -1,0 +1,18 @@
+year: 2018
+kickoff_date: "2018-06-30"
+mode: knockout_only
+actual_champion: France
+round_of_16:
+  - [France, Argentina]
+  - [Uruguay, Portugal]
+  - [Spain, Russia]
+  - [Croatia, Denmark]
+  - [Brazil, Mexico]
+  - [Belgium, Japan]
+  - [Sweden, Switzerland]
+  - [Colombia, England]
+quarterfinal_pairings:
+  - [0, 1]
+  - [4, 5]
+  - [2, 3]
+  - [6, 7]

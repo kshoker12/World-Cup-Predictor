@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 148" width="340" height="148">
+  <rect x="4" y="4" width="332" height="140" rx="10" fill="#E8F3FF" stroke="#007FFF" stroke-width="2"/>
+  <text x="170" y="29" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#007FFF" text-anchor="middle">LSTM Model</text>
+  <rect x="23" y="38" width="294" height="58" rx="6" fill="#ffffff" stroke="#99CCFF" stroke-width="2"/>
+  <rect x="50" y="54" width="36" height="26" rx="4" fill="#E8F3FF" stroke="#66B3FF" stroke-width="1.5"/>
+  <path d="M 86 67 L 110 67" stroke="#0066CC" stroke-width="2"/>
+  <polygon points="116,67 110,63 110,71" fill="#0066CC"/>
+  <rect x="116" y="54" width="36" height="26" rx="4" fill="#E8F3FF" stroke="#66B3FF" stroke-width="1.5"/>
+  <path d="M 152 67 L 176 67" stroke="#0066CC" stroke-width="2"/>
+  <polygon points="182,67 176,63 176,71" fill="#0066CC"/>
+  <rect x="182" y="54" width="36" height="26" rx="4" fill="#E8F3FF" stroke="#66B3FF" stroke-width="1.5"/>
+  <path d="M 218 67 L 242 67" stroke="#007FFF" stroke-width="2"/>
+  <polygon points="248,67 242,63 242,71" fill="#007FFF"/>
+  <text x="268" y="72" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#0055AA" text-anchor="middle">&#955;</text>
+  <text x="170" y="114" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#334155" text-anchor="middle">Last 10 matches to rates + embeddings</text>
+  <text x="170" y="132" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">2-layer encoder, 256-dim hidden state</text>
+</svg>

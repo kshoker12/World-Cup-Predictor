@@ -1,0 +1,10 @@
+{
+  "profile": "kaggle",
+  "seed": 42,
+  "n_sims": 5,
+  "elapsed_seconds": 0.91,
+  "seconds_per_sim": 0.181836,
+  "models_dir": "output",
+  "data_root": "tests/fixtures/flat_soccer_data",
+  "finished_at": "2026-07-04T18:54:46.267222+00:00"
+}

@@ -1,0 +1,7 @@
+{
+    "feature_dim": 10,
+    "hidden_dim": 256,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "seq_len": 10
+  }

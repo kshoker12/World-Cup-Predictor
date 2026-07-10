@@ -1,0 +1,10 @@
+{
+  "profile": "kaggle",
+  "seed": 42,
+  "n_sims": 25,
+  "elapsed_seconds": 2.95,
+  "seconds_per_sim": 0.1097117066802457,
+  "models_dir": "output",
+  "data_root": "/Users/kshoker/Desktop/projects/WorldCupPredictor/data",
+  "simulation_round": "quarter_finals"
+}

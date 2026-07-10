@@ -1,0 +1,560 @@
+{
+  "year": 2018,
+  "profile": "backtest",
+  "seed": 42,
+  "n_sims": 5,
+  "kickoff_date": "2018-06-30",
+  "simulation_mode": "knockout_only",
+  "tournament_config": "/Users/kshoker/Desktop/projects/WorldCupPredictor/config/tournaments/world_cup_2018_knockout.yaml",
+  "group_match_count": 0,
+  "knockout_match_count": 15,
+  "rho": -0.05,
+  "ensemble": {
+    "w_gbm": 0.4321824690492635,
+    "w_nn": 0.33110992427728314,
+    "w_bayesian": 0.23670760667345328
+  },
+  "calibration_metrics": {
+    "actual_champion": "France",
+    "p_actual_champion": 0.0,
+    "actual_champion_rank": 9,
+    "multiclass_brier": 1.28,
+    "log_score": -34.538776394910684
+  },
+  "champion_probs": {
+    "Argentina": 0.0,
+    "Belgium": 0.2,
+    "Brazil": 0.2,
+    "Colombia": 0.0,
+    "Croatia": 0.4,
+    "Denmark": 0.0,
+    "England": 0.0,
+    "France": 0.0,
+    "Japan": 0.0,
+    "Mexico": 0.0,
+    "Portugal": 0.0,
+    "Russia": 0.0,
+    "Spain": 0.0,
+    "Sweden": 0.0,
+    "Switzerland": 0.2,
+    "Uruguay": 0.0
+  },
+  "advancement_probs": {
+    "Argentina": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.6,
+      "semi_finals": 0.2,
+      "final": 0.2,
+      "champion": 0.0
+    },
+    "Belgium": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.8,
+      "semi_finals": 0.2,
+      "final": 0.2,
+      "champion": 0.2
+    },
+    "Brazil": {
+      "round_of_16": 1.0,
+      "quarter_finals": 1.0,
+      "semi_finals": 0.8,
+      "final": 0.4,
+      "champion": 0.2
+    },
+    "Colombia": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.4,
+      "semi_finals": 0.2,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "Croatia": {
+      "round_of_16": 1.0,
+      "quarter_finals": 1.0,
+      "semi_finals": 0.6,
+      "final": 0.4,
+      "champion": 0.4
+    },
+    "Denmark": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.0,
+      "semi_finals": 0.0,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "England": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.6,
+      "semi_finals": 0.0,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "France": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.4,
+      "semi_finals": 0.4,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "Japan": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.2,
+      "semi_finals": 0.0,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "Mexico": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.0,
+      "semi_finals": 0.0,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "Portugal": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.8,
+      "semi_finals": 0.2,
+      "final": 0.2,
+      "champion": 0.0
+    },
+    "Russia": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.6,
+      "semi_finals": 0.2,
+      "final": 0.2,
+      "champion": 0.0
+    },
+    "Spain": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.4,
+      "semi_finals": 0.2,
+      "final": 0.2,
+      "champion": 0.0
+    },
+    "Sweden": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.4,
+      "semi_finals": 0.4,
+      "final": 0.0,
+      "champion": 0.0
+    },
+    "Switzerland": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.6,
+      "semi_finals": 0.4,
+      "final": 0.2,
+      "champion": 0.2
+    },
+    "Uruguay": {
+      "round_of_16": 1.0,
+      "quarter_finals": 0.2,
+      "semi_finals": 0.2,
+      "final": 0.0,
+      "champion": 0.0
+    }
+  },
+  "top_champion_probabilities": [
+    {
+      "team": "Croatia",
+      "prob": 0.4
+    },
+    {
+      "team": "Belgium",
+      "prob": 0.2
+    },
+    {
+      "team": "Brazil",
+      "prob": 0.2
+    },
+    {
+      "team": "Switzerland",
+      "prob": 0.2
+    },
+    {
+      "team": "Argentina",
+      "prob": 0.0
+    },
+    {
+      "team": "Colombia",
+      "prob": 0.0
+    },
+    {
+      "team": "Denmark",
+      "prob": 0.0
+    },
+    {
+      "team": "England",
+      "prob": 0.0
+    },
+    {
+      "team": "France",
+      "prob": 0.0
+    },
+    {
+      "team": "Japan",
+      "prob": 0.0
+    }
+  ],
+  "elapsed_seconds": 54.69,
+  "seconds_per_sim": 0.170135,
+  "models_dir": "output",
+  "data_root": "/Users/kshoker/Desktop/projects/WorldCupPredictor/data",
+  "match_win_probs": [
+    {
+      "round": "round_of_16",
+      "home": "Belgium",
+      "away": "Japan",
+      "p_home_win": 0.8,
+      "p_away_win": 0.2,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Brazil",
+      "away": "Mexico",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Colombia",
+      "away": "England",
+      "p_home_win": 0.4,
+      "p_away_win": 0.6,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Croatia",
+      "away": "Denmark",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "France",
+      "away": "Argentina",
+      "p_home_win": 0.4,
+      "p_away_win": 0.6,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Spain",
+      "away": "Russia",
+      "p_home_win": 0.4,
+      "p_away_win": 0.6,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Sweden",
+      "away": "Switzerland",
+      "p_home_win": 0.4,
+      "p_away_win": 0.6,
+      "n_sims": 5
+    },
+    {
+      "round": "round_of_16",
+      "home": "Uruguay",
+      "away": "Portugal",
+      "p_home_win": 0.2,
+      "p_away_win": 0.8,
+      "n_sims": 5
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Argentina",
+      "away": "Portugal",
+      "p_home_win": 0.5,
+      "p_away_win": 0.5,
+      "n_sims": 2
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Argentina",
+      "away": "Uruguay",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Brazil",
+      "away": "Belgium",
+      "p_home_win": 0.75,
+      "p_away_win": 0.25,
+      "n_sims": 4
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Brazil",
+      "away": "Japan",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "quarter_finals",
+      "home": "France",
+      "away": "Portugal",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 2
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Russia",
+      "away": "Croatia",
+      "p_home_win": 0.333333,
+      "p_away_win": 0.666667,
+      "n_sims": 3
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Spain",
+      "away": "Croatia",
+      "p_home_win": 0.5,
+      "p_away_win": 0.5,
+      "n_sims": 2
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Sweden",
+      "away": "England",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 2
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Switzerland",
+      "away": "Colombia",
+      "p_home_win": 0.5,
+      "p_away_win": 0.5,
+      "n_sims": 2
+    },
+    {
+      "round": "quarter_finals",
+      "home": "Switzerland",
+      "away": "England",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Argentina",
+      "away": "Brazil",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Croatia",
+      "away": "Sweden",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 2
+    },
+    {
+      "round": "semi_finals",
+      "home": "Croatia",
+      "away": "Switzerland",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "France",
+      "away": "Belgium",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "France",
+      "away": "Brazil",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Portugal",
+      "away": "Brazil",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Russia",
+      "away": "Colombia",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Spain",
+      "away": "Switzerland",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "semi_finals",
+      "home": "Uruguay",
+      "away": "Brazil",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "final",
+      "home": "Argentina",
+      "away": "Switzerland",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "final",
+      "home": "Belgium",
+      "away": "Spain",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "final",
+      "home": "Brazil",
+      "away": "Croatia",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    },
+    {
+      "round": "final",
+      "home": "Brazil",
+      "away": "Russia",
+      "p_home_win": 1.0,
+      "p_away_win": 0.0,
+      "n_sims": 1
+    },
+    {
+      "round": "final",
+      "home": "Portugal",
+      "away": "Croatia",
+      "p_home_win": 0.0,
+      "p_away_win": 1.0,
+      "n_sims": 1
+    }
+  ],
+  "most_likely_bracket": {
+    "round_of_16": [
+      {
+        "home": "France",
+        "away": "Argentina",
+        "winner": "Argentina",
+        "score": "2-3"
+      },
+      {
+        "home": "Uruguay",
+        "away": "Portugal",
+        "winner": "Portugal",
+        "score": "1-4"
+      },
+      {
+        "home": "Spain",
+        "away": "Russia",
+        "winner": "Russia",
+        "score": "0-1"
+      },
+      {
+        "home": "Croatia",
+        "away": "Denmark",
+        "winner": "Croatia",
+        "score": "4-1"
+      },
+      {
+        "home": "Brazil",
+        "away": "Mexico",
+        "winner": "Brazil",
+        "score": "3-1"
+      },
+      {
+        "home": "Belgium",
+        "away": "Japan",
+        "winner": "Belgium",
+        "score": "3-1"
+      },
+      {
+        "home": "Sweden",
+        "away": "Switzerland",
+        "winner": "Switzerland",
+        "score": "0-1"
+      },
+      {
+        "home": "Colombia",
+        "away": "England",
+        "winner": "Colombia",
+        "score": "1-0"
+      }
+    ],
+    "quarter_finals": [
+      {
+        "home": "Argentina",
+        "away": "Portugal",
+        "winner": "Argentina",
+        "score": "1-0"
+      },
+      {
+        "home": "Brazil",
+        "away": "Belgium",
+        "winner": "Brazil",
+        "score": "4-1"
+      },
+      {
+        "home": "Russia",
+        "away": "Croatia",
+        "winner": "Croatia",
+        "score": "1-2"
+      },
+      {
+        "home": "Switzerland",
+        "away": "Colombia",
+        "winner": "Switzerland",
+        "score": "2-1"
+      }
+    ],
+    "semi_finals": [
+      {
+        "home": "Argentina",
+        "away": "Brazil",
+        "winner": "Argentina",
+        "score": "1-0"
+      },
+      {
+        "home": "Croatia",
+        "away": "Switzerland",
+        "winner": "Switzerland",
+        "score": "0-2"
+      }
+    ],
+    "final": {
+      "home": "Argentina",
+      "away": "Switzerland",
+      "winner": "Switzerland",
+      "score": "1-4"
+    },
+    "champion": "Switzerland"
+  },
+  "most_likely_bracket_fraction": 0.2
+}

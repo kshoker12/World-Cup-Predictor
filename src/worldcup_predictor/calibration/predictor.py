@@ -53,12 +53,20 @@ class CalibratedPredictor:
             return features
         if self.nn is None or home_seq is None or away_seq is None:
             raise ValueError("GBM embedding model requires NN sequences at predict time")
-        out = features.copy()
         diff = compute_embedding_diff(self.nn, home_seq, away_seq, batch_size=len(features))
-        for idx, col in enumerate(self.gbm.feature_columns):
-            if col.startswith(EMBEDDING_PREFIX):
-                out[col] = diff[:, int(col.removeprefix(EMBEDDING_PREFIX))]
-        return out
+        emb_cols = [
+            col for col in self.gbm.feature_columns if col.startswith(EMBEDDING_PREFIX)
+        ]
+        if not emb_cols:
+            return features
+        indices = [int(col.removeprefix(EMBEDDING_PREFIX)) for col in emb_cols]
+        emb_df = pd.DataFrame(
+            diff[:, indices],
+            columns=emb_cols,
+            index=features.index,
+        )
+        base_cols = [col for col in self.gbm.feature_columns if col in features.columns]
+        return pd.concat([features[base_cols], emb_df], axis=1)
 
     def predict_lambda_raw(self, features: pd.DataFrame) -> pd.DataFrame:
         return self.gbm.predict_lambda(features)

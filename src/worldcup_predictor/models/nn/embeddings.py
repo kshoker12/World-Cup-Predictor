@@ -54,10 +54,9 @@ def augment_features_with_embeddings(
 ) -> pd.DataFrame:
     """Append emb_diff_* columns aligned row-wise with features."""
     emb = compute_embedding_diff(nn_predictor, home_seq, away_seq)
-    out = features.copy()
-    for idx, col in enumerate(embedding_column_names(emb.shape[1])):
-        out[col] = emb[:, idx]
-    return out
+    cols = embedding_column_names(emb.shape[1])
+    emb_df = pd.DataFrame(emb, columns=cols, index=features.index)
+    return pd.concat([features, emb_df], axis=1)
 
 
 def gbm_feature_columns_with_embeddings(hidden_dim: int) -> list[str]:

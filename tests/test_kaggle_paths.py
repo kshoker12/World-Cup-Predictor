@@ -6,7 +6,13 @@ from pathlib import Path
 
 import pytest
 
-from worldcup_predictor.kaggle_paths import DataLayout, has_international_data
+from worldcup_predictor.kaggle_paths import (
+    DataLayout,
+    REQUIRED_MODEL_FILES,
+    has_international_data,
+    stage_models,
+    verify_model_artifacts,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -52,3 +58,16 @@ def test_flat_kaggle_layout(tmp_path: Path):
     assert layout.understat_parquet() == flat / "understat_matches.parquet"
     assert layout.club_dir() == flat
     assert layout.has_club_data()
+
+
+def test_verify_model_artifacts_missing(tmp_path: Path):
+    missing = verify_model_artifacts(tmp_path)
+    assert set(missing) == set(REQUIRED_MODEL_FILES)
+
+
+def test_stage_models_raises_when_incomplete(tmp_path: Path):
+    incomplete = tmp_path / "incomplete"
+    incomplete.mkdir()
+    (incomplete / "calibration.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(FileNotFoundError, match="Missing model files"):
+        stage_models(incomplete, tmp_path / "dest")

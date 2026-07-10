@@ -137,12 +137,18 @@ class TournamentConfig:
     actual_champion: str | None = None
     groups: dict[str, list[str]] | None = None
     mode: str = "full"
+    start_round: str = "round_of_16"
     round_of_16: tuple[tuple[str, str], ...] = ()
+    quarter_finals: tuple[tuple[str, str], ...] = ()
     quarterfinal_pairings: tuple[tuple[int, int], ...] = ()
 
     @property
     def is_knockout_only(self) -> bool:
         return self.mode == "knockout_only"
+
+    @property
+    def starts_at_quarter_finals(self) -> bool:
+        return self.start_round == "quarter_finals"
 
 
 def _parse_date(value: str) -> date:
@@ -277,15 +283,19 @@ def load_tournament_config(path: Path) -> TournamentConfig:
     groups_raw = raw.get("groups")
     groups = {k: list(v) for k, v in groups_raw.items()} if groups_raw else None
     r16_raw = raw.get("round_of_16", [])
+    qf_fixtures_raw = raw.get("quarter_finals", [])
     qf_raw = raw.get("quarterfinal_pairings", [])
     actual = raw.get("actual_champion")
+    start_round = str(raw.get("start_round", "round_of_16"))
     return TournamentConfig(
         year=int(raw["year"]),
         kickoff_date=_parse_date(raw["kickoff_date"]),
         actual_champion=str(actual) if actual is not None else None,
         groups=groups,
         mode=mode,
+        start_round=start_round,
         round_of_16=tuple(tuple(pair) for pair in r16_raw),
+        quarter_finals=tuple(tuple(pair) for pair in qf_fixtures_raw),
         quarterfinal_pairings=tuple(tuple(pair) for pair in qf_raw),
     )
 

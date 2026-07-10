@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 148" width="340" height="148">
+  <rect x="4" y="4" width="332" height="140" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+  <text x="170" y="29" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#059669" text-anchor="middle">Feature Pipeline</text>
+  <rect x="23" y="38" width="294" height="58" rx="6" fill="#ffffff" stroke="#A7F3D0" stroke-width="2"/>
+  <circle cx="58" cy="67" r="7" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="88" cy="67" r="7" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="118" cy="67" r="7" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <path d="M 128 67 L 148 67" stroke="#059669" stroke-width="2"/>
+  <polygon points="154,67 148,63 148,71" fill="#059669"/>
+  <rect x="158" y="52" width="96" height="30" rx="6" fill="#ffffff" stroke="#34D399" stroke-width="1.5"/>
+  <text x="206" y="72" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#047857" text-anchor="middle">h vs a</text>
+  <text x="170" y="114" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#334155" text-anchor="middle">Replay history, build pre-match state</text>
+  <text x="170" y="132" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">Elo, form, H2H, match sequences</text>
+</svg>

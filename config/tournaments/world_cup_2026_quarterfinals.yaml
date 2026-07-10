@@ -1,0 +1,9 @@
+year: 2026
+kickoff_date: "2026-07-09"
+mode: knockout_only
+start_round: quarter_finals
+quarter_finals:
+  - [Morocco, France]
+  - [Belgium, Spain]
+  - [Norway, England]
+  - [Argentina, Switzerland]

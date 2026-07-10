@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 148" width="340" height="148">
+  <rect x="4" y="4" width="332" height="140" rx="10" fill="#FFF4E6" stroke="#FF8000" stroke-width="2"/>
+  <text x="170" y="29" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#FF8000" text-anchor="middle">LGBM Model</text>
+  <rect x="23" y="38" width="294" height="58" rx="6" fill="#ffffff" stroke="#FFCC99" stroke-width="2"/>
+  <circle cx="170" cy="58" r="6" fill="#FFEDD5" stroke="#FF8000" stroke-width="1.5"/>
+  <path d="M 170 64 L 142 78" stroke="#EA580C" stroke-width="1.5"/>
+  <path d="M 170 64 L 198 78" stroke="#EA580C" stroke-width="1.5"/>
+  <circle cx="142" cy="82" r="5" fill="#FFEDD5" stroke="#FF8000" stroke-width="1.5"/>
+  <circle cx="198" cy="82" r="5" fill="#FFEDD5" stroke="#FF8000" stroke-width="1.5"/>
+  <path d="M 206 67 L 232 67" stroke="#FF8000" stroke-width="2"/>
+  <polygon points="238,67 232,63 232,71" fill="#FF8000"/>
+  <text x="262" y="72" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#CC6600" text-anchor="middle">&#955;</text>
+  <text x="170" y="114" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#334155" text-anchor="middle">Poisson gradient boosting</text>
+  <text x="170" y="132" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">8 tabular + 256 NN embedding features</text>
+</svg>

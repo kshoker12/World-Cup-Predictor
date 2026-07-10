@@ -1,0 +1,18 @@
+year: 2022
+kickoff_date: "2022-12-03"
+mode: knockout_only
+actual_champion: Argentina
+round_of_16:
+  - [Netherlands, United States]
+  - [Argentina, Australia]
+  - [France, Poland]
+  - [England, Senegal]
+  - [Japan, Croatia]
+  - [Brazil, South Korea]
+  - [Morocco, Spain]
+  - [Portugal, Switzerland]
+quarterfinal_pairings:
+  - [0, 1]
+  - [4, 5]
+  - [2, 3]
+  - [6, 7]

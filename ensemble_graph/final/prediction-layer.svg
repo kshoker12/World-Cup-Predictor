@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 168" width="340" height="168">
+  <rect x="4" y="4" width="332" height="160" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
+  <text x="170" y="29" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#DC2626" text-anchor="middle">Prediction Layer</text>
+  <rect x="23" y="38" width="294" height="72" rx="6" fill="#ffffff" stroke="#FECACA" stroke-width="2"/>
+  <text x="52" y="82" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#991B1B" text-anchor="middle">&#955;</text>
+  <path d="M 68 76 L 92 76" stroke="#DC2626" stroke-width="2"/>
+  <polygon points="98,76 92,72 92,80" fill="#DC2626"/>
+  <text x="129" y="52" font-family="Georgia, serif" font-style="italic" font-size="13" fill="#B91C1C" text-anchor="middle">P<tspan font-size="9" baseline-shift="sub">DC</tspan></text>
+  <rect x="102" y="62" width="54" height="34" rx="4" fill="#ffffff" stroke="#F87171" stroke-width="1.5"/>
+  <rect x="106" y="66" width="14" height="10" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <rect x="122" y="66" width="14" height="10" fill="#FECACA" stroke="#FCA5A5" stroke-width="1"/>
+  <rect x="138" y="66" width="14" height="10" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <rect x="106" y="78" width="14" height="10" fill="#FECACA" stroke="#FCA5A5" stroke-width="1"/>
+  <rect x="122" y="78" width="14" height="10" fill="#FCA5A5" stroke="#F87171" stroke-width="1"/>
+  <rect x="138" y="78" width="14" height="10" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <path d="M 162 76 L 186 76" stroke="#DC2626" stroke-width="2"/>
+  <polygon points="192,76 186,72 186,80" fill="#DC2626"/>
+  <text x="238" y="82" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#991B1B" text-anchor="middle">G<tspan font-size="12" baseline-shift="sub">h</tspan>, G<tspan font-size="12" baseline-shift="sub">a</tspan></text>
+  <text x="170" y="132" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#334155" text-anchor="middle">Dixon-Coles score grid to outcome</text>
+  <text x="170" y="150" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">Sample scoreline, W/D/L, knockout tiebreak</text>
+</svg>

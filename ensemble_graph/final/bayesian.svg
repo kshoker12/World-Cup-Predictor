@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 168" width="340" height="168">
+  <rect x="4" y="4" width="332" height="160" rx="10" fill="#F3EDFF" stroke="#9933FF" stroke-width="2"/>
+  <text x="170" y="29" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#9933FF" text-anchor="middle">Bayesian Model</text>
+  <rect x="23" y="38" width="294" height="72" rx="6" fill="#ffffff" stroke="#D4B3FF" stroke-width="2"/>
+  <rect x="48" y="50" width="72" height="48" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="84" y="68" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#6D28D9" text-anchor="middle">Home</text>
+  <text x="84" y="86" font-family="Georgia, serif" font-style="italic" font-size="13" fill="#5B21B6" text-anchor="middle">attack <tspan font-size="10" baseline-shift="sub">h</tspan></text>
+  <text x="138" y="78" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7C3AED" text-anchor="middle">vs</text>
+  <rect x="156" y="50" width="72" height="48" rx="5" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="192" y="68" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#6D28D9" text-anchor="middle">Away</text>
+  <text x="192" y="86" font-family="Georgia, serif" font-style="italic" font-size="13" fill="#5B21B6" text-anchor="middle">defense <tspan font-size="10" baseline-shift="sub">a</tspan></text>
+  <path d="M 234 74 L 258 74" stroke="#9333EA" stroke-width="2"/>
+  <polygon points="264,74 258,70 258,78" fill="#9333EA"/>
+  <text x="286" y="80" font-family="Georgia, serif" font-style="italic" font-size="24" fill="#5B21B6" text-anchor="middle">&#955;</text>
+  <text x="170" y="132" font-family="Arial, sans-serif" font-size="17" font-weight="600" fill="#334155" text-anchor="middle">Team attack vs opponent defense</text>
+  <text x="170" y="150" font-family="Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle">Plus tabular features, shrunk toward league average</text>
+</svg>
