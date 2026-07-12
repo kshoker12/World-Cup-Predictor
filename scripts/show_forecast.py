@@ -124,7 +124,7 @@ def print_report(data: dict, history: dict | None = None) -> None:
         print(parts)
 
     if history:
-        for rnd_entry in history.get("rounds", []):
+        for rnd_entry in reversed(history.get("rounds", [])):
             summary = rnd_entry.get("summary", {})
             print(
                 f"\n--- {rnd_entry.get('label', rnd_entry.get('round'))} "
@@ -271,7 +271,7 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
 
     history_sections = ""
     if history:
-        for rnd_entry in history.get("rounds", []):
+        for rnd_entry in reversed(history.get("rounds", [])):
             summary = rnd_entry.get("summary", {})
             label = rnd_entry.get("label", ROUND_LABELS.get(rnd_entry.get("round", ""), "Results"))
             hist_sims = rnd_entry.get("n_sims", 0)
