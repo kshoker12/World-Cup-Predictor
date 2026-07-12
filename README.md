@@ -53,7 +53,10 @@ Put international results at `data/raw/results.csv` ([martj42](https://github.co
 python scripts/run_kaggle_pipeline.py --profile kaggle
 
 # WC 2026 knockout forecast (80k sims)
-python scripts/run_kaggle_forecast.py
+python scripts/run_kaggle_forecast.py          # from R16
+python scripts/run_kaggle_forecast_qf.py       # from QF
+python scripts/run_kaggle_forecast_sf.py       # from SF
+# Or use notebooks/kaggle_wc2026_forecast{,_qf,_sf}.ipynb on Kaggle
 
 # Held-out test metrics
 python scripts/evaluate_test_metrics.py --models-dir output

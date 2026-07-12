@@ -1,0 +1,7 @@
+year: 2026
+kickoff_date: "2026-07-14"
+mode: knockout_only
+start_round: semi_finals
+semi_finals:
+  - [France, Spain]
+  - [England, Argentina]

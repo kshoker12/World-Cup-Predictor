@@ -1,0 +1,402 @@
+{
+    "n_sims": 80000,
+    "champion_probs": {
+      "Argentina": 0.22465,
+      "Belgium": 0.04115,
+      "England": 0.125925,
+      "France": 0.27385,
+      "Morocco": 0.0625875,
+      "Norway": 0.0430375,
+      "Spain": 0.2130375,
+      "Switzerland": 0.0157625
+    },
+    "advancement_probs": {
+      "Argentina": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.7984875,
+        "final": 0.458975,
+        "champion": 0.22465
+      },
+      "Belgium": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.3345125,
+        "final": 0.0955875,
+        "champion": 0.04115
+      },
+      "England": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.6328625,
+        "final": 0.3238125,
+        "champion": 0.125925
+      },
+      "France": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.695825,
+        "final": 0.4319125,
+        "champion": 0.27385
+      },
+      "Morocco": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.304175,
+        "final": 0.13605,
+        "champion": 0.0625875
+      },
+      "Norway": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.3671375,
+        "final": 0.152925,
+        "champion": 0.0430375
+      },
+      "Spain": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.6654875,
+        "final": 0.33645,
+        "champion": 0.2130375
+      },
+      "Switzerland": {
+        "round_of_16": 1.0,
+        "quarter_finals": 1.0,
+        "semi_finals": 0.2015125,
+        "final": 0.0642875,
+        "champion": 0.0157625
+      }
+    },
+    "match_win_probs": [
+      {
+        "round": "quarter_finals",
+        "home": "Argentina",
+        "away": "Switzerland",
+        "p_home_win": 0.798488,
+        "p_away_win": 0.201512,
+        "n_sims": 80000
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Belgium",
+        "away": "Spain",
+        "p_home_win": 0.334512,
+        "p_away_win": 0.665488,
+        "n_sims": 80000
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Morocco",
+        "away": "France",
+        "p_home_win": 0.304175,
+        "p_away_win": 0.695825,
+        "n_sims": 80000
+      },
+      {
+        "round": "quarter_finals",
+        "home": "Norway",
+        "away": "England",
+        "p_home_win": 0.367138,
+        "p_away_win": 0.632862,
+        "n_sims": 80000
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Argentina",
+        "p_home_win": 0.456665,
+        "p_away_win": 0.543335,
+        "n_sims": 40406
+      },
+      {
+        "round": "semi_finals",
+        "home": "England",
+        "away": "Switzerland",
+        "p_home_win": 0.729042,
+        "p_away_win": 0.270958,
+        "n_sims": 10223
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "Belgium",
+        "p_home_win": 0.774308,
+        "p_away_win": 0.225692,
+        "n_sims": 18636
+      },
+      {
+        "round": "semi_finals",
+        "home": "France",
+        "away": "Spain",
+        "p_home_win": 0.543424,
+        "p_away_win": 0.456576,
+        "n_sims": 37030
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "Belgium",
+        "p_home_win": 0.576492,
+        "p_away_win": 0.423508,
+        "n_sims": 8125
+      },
+      {
+        "round": "semi_finals",
+        "home": "Morocco",
+        "away": "Spain",
+        "p_home_win": 0.382504,
+        "p_away_win": 0.617496,
+        "n_sims": 16209
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Argentina",
+        "p_home_win": 0.371022,
+        "p_away_win": 0.628978,
+        "n_sims": 23473
+      },
+      {
+        "round": "semi_finals",
+        "home": "Norway",
+        "away": "Switzerland",
+        "p_home_win": 0.59766,
+        "p_away_win": 0.40234,
+        "n_sims": 5898
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Argentina",
+        "p_home_win": 0.378547,
+        "p_away_win": 0.621453,
+        "n_sims": 3524
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "England",
+        "p_home_win": 0.411888,
+        "p_away_win": 0.588112,
+        "n_sims": 2389
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Norway",
+        "p_home_win": 0.553542,
+        "p_away_win": 0.446458,
+        "n_sims": 1214
+      },
+      {
+        "round": "final",
+        "home": "Belgium",
+        "away": "Switzerland",
+        "p_home_win": 0.580769,
+        "p_away_win": 0.419231,
+        "n_sims": 520
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Argentina",
+        "p_home_win": 0.547106,
+        "p_away_win": 0.452894,
+        "n_sims": 15858
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "England",
+        "p_home_win": 0.668958,
+        "p_away_win": 0.331042,
+        "n_sims": 11201
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Norway",
+        "p_home_win": 0.75246,
+        "p_away_win": 0.24754,
+        "n_sims": 5284
+      },
+      {
+        "round": "final",
+        "home": "France",
+        "away": "Switzerland",
+        "p_home_win": 0.797738,
+        "p_away_win": 0.202262,
+        "n_sims": 2210
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Argentina",
+        "p_home_win": 0.396044,
+        "p_away_win": 0.603956,
+        "n_sims": 4954
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "England",
+        "p_home_win": 0.443942,
+        "p_away_win": 0.556058,
+        "n_sims": 3541
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Norway",
+        "p_home_win": 0.594096,
+        "p_away_win": 0.405904,
+        "n_sims": 1626
+      },
+      {
+        "round": "final",
+        "home": "Morocco",
+        "away": "Switzerland",
+        "p_home_win": 0.664482,
+        "p_away_win": 0.335518,
+        "n_sims": 763
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Argentina",
+        "p_home_win": 0.547084,
+        "p_away_win": 0.452916,
+        "n_sims": 12382
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "England",
+        "p_home_win": 0.658992,
+        "p_away_win": 0.341008,
+        "n_sims": 8774
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Norway",
+        "p_home_win": 0.772993,
+        "p_away_win": 0.227007,
+        "n_sims": 4110
+      },
+      {
+        "round": "final",
+        "home": "Spain",
+        "away": "Switzerland",
+        "p_home_win": 0.793939,
+        "p_away_win": 0.206061,
+        "n_sims": 1650
+      }
+    ],
+    "most_likely_bracket": {
+      "quarter_finals": [
+        {
+          "home": "Morocco",
+          "away": "France",
+          "winner": "France",
+          "score": "1-2"
+        },
+        {
+          "home": "Belgium",
+          "away": "Spain",
+          "winner": "Spain",
+          "score": "2-3"
+        },
+        {
+          "home": "Norway",
+          "away": "England",
+          "winner": "England",
+          "score": "0-2"
+        },
+        {
+          "home": "Argentina",
+          "away": "Switzerland",
+          "winner": "Argentina",
+          "score": "1-0"
+        }
+      ],
+      "semi_finals": [
+        {
+          "home": "France",
+          "away": "Spain",
+          "winner": "France",
+          "score": "2-0"
+        },
+        {
+          "home": "England",
+          "away": "Argentina",
+          "winner": "England",
+          "score": "2-1"
+        }
+      ],
+      "final": {
+        "home": "France",
+        "away": "England",
+        "winner": "France",
+        "score": "1-0"
+      },
+      "champion": "France"
+    },
+    "most_likely_bracket_count": 3144,
+    "most_likely_bracket_fraction": 0.0393,
+    "sample_bracket": {
+      "quarter_finals": [
+        {
+          "home": "Morocco",
+          "away": "France",
+          "winner": "France",
+          "score": "1-4"
+        },
+        {
+          "home": "Belgium",
+          "away": "Spain",
+          "winner": "Belgium",
+          "score": "1-0"
+        },
+        {
+          "home": "Norway",
+          "away": "England",
+          "winner": "England",
+          "score": "2-4"
+        },
+        {
+          "home": "Argentina",
+          "away": "Switzerland",
+          "winner": "Switzerland",
+          "score": "0-1"
+        }
+      ],
+      "semi_finals": [
+        {
+          "home": "France",
+          "away": "Belgium",
+          "winner": "France",
+          "score": "5-0"
+        },
+        {
+          "home": "England",
+          "away": "Switzerland",
+          "winner": "Switzerland",
+          "score": "2-3"
+        }
+      ],
+      "final": {
+        "home": "France",
+        "away": "Switzerland",
+        "winner": "France",
+        "score": "3-0"
+      },
+      "champion": "France"
+    },
+    "kickoff_date": "2026-07-09",
+    "tournament_config": "/kaggle/working/WorldCupPredictor/config/tournaments/world_cup_2026_quarterfinals.yaml",
+    "simulation_mode": "knockout_only",
+    "simulation_round": "quarter_finals",
+    "elapsed_seconds": 18508.34
+  }

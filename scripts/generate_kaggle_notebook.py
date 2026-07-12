@@ -19,6 +19,7 @@ INCLUDE_PATHS = [
     "scripts/run_kaggle_pipeline.py",
     "scripts/run_kaggle_forecast.py",
     "scripts/run_kaggle_forecast_qf.py",
+    "scripts/run_kaggle_forecast_sf.py",
     "scripts/run_calibration_backtest_2018.py",
     "scripts/run_calibration_backtest_2022.py",
 ]
@@ -580,6 +581,83 @@ stage_and_verify_models()
 print("Setup complete. Next: run_forecast(profile='fast', n_sims=500)")
 '''
 
+FORECAST_SF_SUFFIX = '''\
+
+FORECAST = MODELS / "wc2026_forecast_sf.json"
+FORECAST_REPORT = MODELS / "forecast_sf_report.json"
+
+
+def run_forecast(
+    profile: str = "kaggle",
+    n_sims: int | None = None,
+    seed: int = 42,
+) -> int:
+    repo = extract_project()
+    data_root = verify_data()
+    stage_and_verify_models()
+    cmd = [
+        sys.executable,
+        str(repo / "scripts" / "run_kaggle_forecast_sf.py"),
+        "--profile", profile,
+        "--seed", str(seed),
+        "--models-dir", str(MODELS),
+        "--data-root", str(data_root),
+    ]
+    if n_sims is not None:
+        cmd.extend(["--sims", str(n_sims)])
+    print("Running:", " ".join(cmd))
+    result = subprocess.run(cmd, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"Forecast failed with exit code {result.returncode}")
+    return result.returncode
+
+
+def show_results(top_n: int = 5) -> None:
+    if not FORECAST.exists():
+        print(f"No forecast yet at {FORECAST}")
+        return
+    forecast = json.loads(FORECAST.read_text(encoding="utf-8"))
+    print(f"Simulations: {forecast.get('n_sims')}")
+    print("\\nTop champion probabilities:")
+    for team, prob in sorted(
+        forecast["champion_probs"].items(), key=lambda x: -x[1]
+    )[:top_n]:
+        print(f"  {team}: {prob:.1%}")
+    print("\\nMost likely bracket champion:", forecast["most_likely_bracket"]["champion"])
+    print("Path frequency:", f"{forecast.get('most_likely_bracket_fraction', 0):.3%}")
+    if FORECAST_REPORT.exists():
+        report = json.loads(FORECAST_REPORT.read_text(encoding="utf-8"))
+        print(
+            f"\\nElapsed: {report.get('elapsed_seconds')}s | "
+            f"s/sim: {report.get('seconds_per_sim')} | Profile: {report.get('profile')}"
+        )
+
+
+def show_match_win_probs() -> None:
+    if not FORECAST.exists():
+        print(f"No forecast yet at {FORECAST}")
+        return
+    forecast = json.loads(FORECAST.read_text(encoding="utf-8"))
+    rows = forecast.get("match_win_probs", [])
+    if not rows:
+        print("No match_win_probs in forecast.")
+        return
+    print("\\nMatch win probabilities (knockout):")
+    for row in rows:
+        print(
+            f"  {row['round']}: {row['home']} vs {row['away']} — "
+            f"P(home)={row['p_home_win']:.1%}, P(away)={row['p_away_win']:.1%} "
+            f"(n={row['n_sims']})"
+        )
+
+
+install_dependencies()
+extract_project()
+verify_data()
+stage_and_verify_models()
+print("Setup complete. Next: run_forecast(profile='fast', n_sims=500)")
+'''
+
 
 def _build_repo_zip_b64() -> str:
     buf = io.BytesIO()
@@ -772,6 +850,43 @@ def main() -> int:
             ),
             _code_cell(
                 "# Production QF forecast — 80,000 simulations.\n"
+                "run_forecast(profile='kaggle', n_sims=80_000)\n"
+                "show_results(top_n=10)\n"
+                "show_match_win_probs()\n"
+            ),
+        ],
+    )
+
+    forecast_sf_setup = (
+        FORECAST_SHARED_PREFIX.format(repo_b64=repo_b64) + FORECAST_SF_SUFFIX
+    )
+    _write_notebook(
+        NOTEBOOKS_DIR / "kaggle_wc2026_forecast_sf.ipynb",
+        [
+            _md_cell([
+                "# WC 2026 Semi-finals Forecast\n",
+                "\n",
+                "Post-QF forecast starting from the **semi-finals** bracket "
+                "(France–Spain, England–Argentina).\n",
+                "\n",
+                "Attach **two** datasets:\n",
+                "- **`soccer-train`** — trained models\n",
+                "- **`soccer-data`** — match CSVs (**must include QF results** in `wc2026_results.csv`)\n",
+                "\n",
+                "GPU ON. Internet ON.\n",
+                "\n",
+                "1. **Cell 1** — setup + stage models\n",
+                "2. **Cell 2** — smoke (`500` sims)\n",
+                "3. **Cell 3** — production (`80,000` sims)\n",
+            ]),
+            _code_cell(forecast_sf_setup),
+            _code_cell(
+                "# Smoke test (~5-20 min). Must pass before production run.\n"
+                "run_forecast(profile='fast', n_sims=500)\n"
+                "show_results()\n"
+            ),
+            _code_cell(
+                "# Production SF forecast — 80,000 simulations.\n"
                 "run_forecast(profile='kaggle', n_sims=80_000)\n"
                 "show_results(top_n=10)\n"
                 "show_match_win_probs()\n"

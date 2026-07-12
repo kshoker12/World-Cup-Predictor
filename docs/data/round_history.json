@@ -92,8 +92,61 @@
         "correct": 6,
         "total": 8
       }
+    },
+    {
+      "round": "quarter_finals",
+      "label": "Quarter-finals",
+      "forecast_file": "history/forecast_pre_qf.json",
+      "n_sims": 80000,
+      "completed_at": "2026-07-11",
+      "results": [
+        {
+          "home": "Morocco",
+          "away": "France",
+          "winner": "France",
+          "score": "0-2",
+          "predicted_winner": "France",
+          "p_home_win": 0.304175,
+          "p_away_win": 0.695825,
+          "correct": true
+        },
+        {
+          "home": "Belgium",
+          "away": "Spain",
+          "winner": "Spain",
+          "score": "1-2",
+          "predicted_winner": "Spain",
+          "p_home_win": 0.334512,
+          "p_away_win": 0.665488,
+          "correct": true
+        },
+        {
+          "home": "Norway",
+          "away": "England",
+          "winner": "England",
+          "score": "1-2",
+          "predicted_winner": "England",
+          "p_home_win": 0.367138,
+          "p_away_win": 0.632862,
+          "correct": true
+        },
+        {
+          "home": "Argentina",
+          "away": "Switzerland",
+          "winner": "Argentina",
+          "score": "3-1",
+          "predicted_winner": "Argentina",
+          "p_home_win": 0.798488,
+          "p_away_win": 0.201512,
+          "correct": true
+        }
+      ],
+      "summary": {
+        "correct": 4,
+        "total": 4
+      }
     }
   ],
-  "active_round": "quarter_finals",
-  "active_forecast": "wc2026_forecast_qf.json"
+  "active_round": "semi_finals",
+  "active_forecast": "wc2026_forecast_sf.json"
 }

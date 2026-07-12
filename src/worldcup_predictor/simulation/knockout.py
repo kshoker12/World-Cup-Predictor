@@ -106,7 +106,15 @@ class KnockoutSimulator:
     ) -> None:
         if not tournament.is_knockout_only:
             raise ValueError("Tournament config must use mode=knockout_only")
-        if tournament.starts_at_quarter_finals:
+        if tournament.starts_at_semi_finals:
+            if not tournament.semi_finals:
+                raise ValueError(
+                    "semi_finals fixtures are required when start_round=semi_finals"
+                )
+            self._teams = sorted(
+                {team for home, away in tournament.semi_finals for team in (home, away)}
+            )
+        elif tournament.starts_at_quarter_finals:
             if not tournament.quarter_finals:
                 raise ValueError("quarter_finals fixtures are required when start_round=quarter_finals")
             self._teams = sorted(
@@ -197,31 +205,43 @@ class KnockoutSimulator:
         return fixtures
 
     def _knockout_match_count(self) -> int:
+        if self.tournament.starts_at_semi_finals:
+            return 3
         if self.tournament.starts_at_quarter_finals:
             return 7
         return 15
 
     def _initial_advancement(self) -> dict[str, str]:
+        if self.tournament.starts_at_semi_finals:
+            return {team: "semi_finals" for team in self._teams}
         if self.tournament.starts_at_quarter_finals:
             return {team: "quarter_finals" for team in self._teams}
         return {team: "round_of_16" for team in self._teams}
 
     def _empty_bracket_path(self) -> dict[str, object]:
+        if self.tournament.starts_at_semi_finals:
+            return {"semi_finals": [], "final": []}
         if self.tournament.starts_at_quarter_finals:
             return {"quarter_finals": [], "semi_finals": [], "final": []}
         return {"round_of_16": [], "quarter_finals": [], "semi_finals": [], "final": []}
 
     def _bracket_rounds_for_signature(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_semi_finals:
+            return ("semi_finals",)
         if self.tournament.starts_at_quarter_finals:
             return ("quarter_finals", "semi_finals")
         return ("round_of_16", "quarter_finals", "semi_finals")
 
     def _count_rounds(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_semi_finals:
+            return ("semi_finals", "final", "champion")
         if self.tournament.starts_at_quarter_finals:
             return ("quarter_finals", "semi_finals", "final", "champion")
         return tuple(_KNOCKOUT_ROUNDS)
 
     def _match_rounds_to_aggregate(self) -> tuple[str, ...]:
+        if self.tournament.starts_at_semi_finals:
+            return ("semi_finals",)
         if self.tournament.starts_at_quarter_finals:
             return ("quarter_finals", "semi_finals")
         return ("round_of_16", "quarter_finals", "semi_finals")
@@ -233,15 +253,35 @@ class KnockoutSimulator:
         advancement = self._initial_advancement()
         bracket_path = self._empty_bracket_path()
 
-        if self.tournament.starts_at_quarter_finals:
-            qf = list(self.tournament.quarter_finals)
+        if self.tournament.starts_at_semi_finals:
+            sf = list(self.tournament.semi_finals)
         else:
-            r16_results = []
-            for home, away in self.tournament.round_of_16:
+            if self.tournament.starts_at_quarter_finals:
+                qf = list(self.tournament.quarter_finals)
+            else:
+                r16_results = []
+                for home, away in self.tournament.round_of_16:
+                    outcome = self._play_match(pipeline, home, away, rng)
+                    r16_results.append((home, away, outcome.winner))
+                    advancement[outcome.winner] = "quarter_finals"
+                    bracket_path["round_of_16"].append(
+                        {
+                            "home": home,
+                            "away": away,
+                            "winner": outcome.winner,
+                            "score": f"{outcome.home_goals}-{outcome.away_goals}",
+                        }
+                    )
+
+                qf_winners = advance_winners(r16_results)
+                qf = self._build_quarterfinals(qf_winners)
+
+            qf_results = []
+            for home, away in qf:
                 outcome = self._play_match(pipeline, home, away, rng)
-                r16_results.append((home, away, outcome.winner))
-                advancement[outcome.winner] = "quarter_finals"
-                bracket_path["round_of_16"].append(
+                qf_results.append((home, away, outcome.winner))
+                advancement[outcome.winner] = "semi_finals"
+                bracket_path["quarter_finals"].append(
                     {
                         "home": home,
                         "away": away,
@@ -250,25 +290,8 @@ class KnockoutSimulator:
                     }
                 )
 
-            qf_winners = advance_winners(r16_results)
-            qf = self._build_quarterfinals(qf_winners)
+            sf = build_knockout_round(advance_winners(qf_results))
 
-        qf_results = []
-        for home, away in qf:
-            outcome = self._play_match(pipeline, home, away, rng)
-            qf_results.append((home, away, outcome.winner))
-            advancement[outcome.winner] = "semi_finals"
-            bracket_path["quarter_finals"].append(
-                {
-                    "home": home,
-                    "away": away,
-                    "winner": outcome.winner,
-                    "score": f"{outcome.home_goals}-{outcome.away_goals}",
-                }
-            )
-
-        sf_winners = advance_winners(qf_results)
-        sf = build_knockout_round(sf_winners)
         sf_results = []
         for home, away in sf:
             outcome = self._play_match(pipeline, home, away, rng)

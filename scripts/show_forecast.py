@@ -27,6 +27,7 @@ ADVANCEMENT_COLUMNS = (
 
 PATH_ROUNDS_R16 = ("round_of_16", "quarter_finals", "semi_finals")
 PATH_ROUNDS_QF = ("quarter_finals", "semi_finals")
+PATH_ROUNDS_SF = ("semi_finals",)
 
 
 def _load(path: Path) -> dict:
@@ -53,29 +54,47 @@ def _match_prob(
     return None, None
 
 
+def _active_round(data: dict, history: dict | None) -> str:
+    sim = data.get("simulation_round")
+    if sim in ROUND_LABELS:
+        return str(sim)
+    if history and history.get("active_round") in ROUND_LABELS:
+        return str(history["active_round"])
+    return "round_of_16"
+
+
 def _is_qf_forecast(data: dict, history: dict | None) -> bool:
-    if data.get("simulation_round") == "quarter_finals":
-        return True
-    if history and history.get("active_round") == "quarter_finals":
-        return True
-    return False
+    return _active_round(data, history) == "quarter_finals"
+
+
+def _is_sf_forecast(data: dict, history: dict | None) -> bool:
+    return _active_round(data, history) == "semi_finals"
 
 
 def _advancement_columns(data: dict, history: dict | None) -> tuple[tuple[str, str], ...]:
-    if _is_qf_forecast(data, history):
+    active = _active_round(data, history)
+    if active == "semi_finals":
+        return tuple(c for c in ADVANCEMENT_COLUMNS if c[0] in ("champion", "final"))
+    if active == "quarter_finals":
         return tuple(c for c in ADVANCEMENT_COLUMNS if c[0] != "quarter_finals")
     return ADVANCEMENT_COLUMNS
 
 
 def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
-    if _is_qf_forecast(data, history):
+    active = _active_round(data, history)
+    if active == "semi_finals":
+        return PATH_ROUNDS_SF
+    if active == "quarter_finals":
         return PATH_ROUNDS_QF
     return PATH_ROUNDS_R16
 
 
 def _meta_line(data: dict, history: dict | None) -> str:
     n_sims = data.get("n_sims", 0)
-    if _is_qf_forecast(data, history):
+    active = _active_round(data, history)
+    if active == "semi_finals":
+        return f"Based on {n_sims:,} simulations · Semi-finals"
+    if active == "quarter_finals":
         return f"Based on {n_sims:,} simulations · Quarter-finals"
     return f"Based on {n_sims:,} simulated tournaments"
 
@@ -118,7 +137,7 @@ def print_report(data: dict, history: dict | None = None) -> None:
                     f"pick: {m['predicted_winner']:18s}  actual: {m['winner']:18s}  [{mark}]"
                 )
 
-    active_round = "quarter_finals" if _is_qf_forecast(data, history) else "round_of_16"
+    active_round = _active_round(data, history)
     print(f"\n--- {ROUND_LABELS[active_round]} ---")
     for m in _round_matches(data.get("match_win_probs", []), active_round):
         home, away = m["home"], m["away"]
@@ -227,7 +246,6 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
     br = data.get("most_likely_bracket", {})
     frac = float(data.get("most_likely_bracket_fraction", 0))
     count = int(data.get("most_likely_bracket_count", 0))
-    qf_mode = _is_qf_forecast(data, history)
     adv_cols = _advancement_columns(data, history)
     path_rounds = _path_rounds(data, history)
 
@@ -276,7 +294,7 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
   <p class="section-note">From {hist_sims:,} simulations before the round was played. {correct}/{total} correct.</p>
   <section>{rows_html}</section>"""
 
-    active_round = "quarter_finals" if qf_mode else "round_of_16"
+    active_round = _active_round(data, history)
     active_label = ROUND_LABELS[active_round]
     match_html = "".join(
         _r16_match_html(
