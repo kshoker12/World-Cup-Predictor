@@ -1,0 +1,13 @@
+{
+  "pending": true,
+  "n_sims": 0,
+  "simulation_round": "final",
+  "fixtures": {
+    "final": ["Spain", "Argentina"],
+    "third_place": ["France", "England"]
+  },
+  "champion_probs": {},
+  "advancement_probs": {},
+  "match_win_probs": [],
+  "most_likely_bracket": {}
+}

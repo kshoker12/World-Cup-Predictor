@@ -20,6 +20,7 @@ INCLUDE_PATHS = [
     "scripts/run_kaggle_forecast.py",
     "scripts/run_kaggle_forecast_qf.py",
     "scripts/run_kaggle_forecast_sf.py",
+    "scripts/run_kaggle_forecast_final.py",
     "scripts/run_calibration_backtest_2018.py",
     "scripts/run_calibration_backtest_2022.py",
 ]
@@ -658,6 +659,13 @@ stage_and_verify_models()
 print("Setup complete. Next: run_forecast(profile='fast', n_sims=500)")
 '''
 
+FORECAST_FINAL_SUFFIX = (
+    FORECAST_SF_SUFFIX
+    .replace("wc2026_forecast_sf.json", "wc2026_forecast_final.json")
+    .replace("forecast_sf_report.json", "forecast_final_report.json")
+    .replace("run_kaggle_forecast_sf.py", "run_kaggle_forecast_final.py")
+)
+
 
 def _build_repo_zip_b64() -> str:
     buf = io.BytesIO()
@@ -887,6 +895,44 @@ def main() -> int:
             ),
             _code_cell(
                 "# Production SF forecast — 80,000 simulations.\n"
+                "run_forecast(profile='kaggle', n_sims=80_000)\n"
+                "show_results(top_n=10)\n"
+                "show_match_win_probs()\n"
+            ),
+        ],
+    )
+
+    forecast_final_setup = (
+        FORECAST_SHARED_PREFIX.format(repo_b64=repo_b64) + FORECAST_FINAL_SUFFIX
+    )
+    _write_notebook(
+        NOTEBOOKS_DIR / "kaggle_wc2026_forecast_final.ipynb",
+        [
+            _md_cell([
+                "# WC 2026 Final & Third-place Forecast\n",
+                "\n",
+                "Simulates both medal matches: **Spain–Argentina** (final) and "
+                "**France–England** (third place).\n",
+                "\n",
+                "Attach **two** datasets:\n",
+                "- **`soccer-train`** — trained models\n",
+                "- **`soccer-data`** — match CSVs (**must include both semi-final results** in `wc2026_results.csv`)\n",
+                "\n",
+                "GPU ON. Internet ON.\n",
+                "\n",
+                "1. **Cell 1** — setup + stage models\n",
+                "2. **Cell 2** — smoke (`500` simulations per match)\n",
+                "3. **Cell 3** — production (`80,000` simulations per match)\n",
+            ]),
+            _code_cell(forecast_final_setup),
+            _code_cell(
+                "# Smoke test. Must pass before production run.\n"
+                "run_forecast(profile='fast', n_sims=500)\n"
+                "show_results()\n"
+                "show_match_win_probs()\n"
+            ),
+            _code_cell(
+                "# Production final + third-place forecast — 80,000 simulations each.\n"
                 "run_forecast(profile='kaggle', n_sims=80_000)\n"
                 "show_results(top_n=10)\n"
                 "show_match_win_probs()\n"

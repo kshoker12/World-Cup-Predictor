@@ -1,0 +1,134 @@
+{
+  "n_sims": 80000,
+  "champion_probs": {
+    "Argentina": 0.2425125,
+    "England": 0.15815,
+    "France": 0.335025,
+    "Spain": 0.2643125
+  },
+  "advancement_probs": {
+    "Argentina": {
+      "semi_finals": 1.0,
+      "final": 0.535875,
+      "champion": 0.2425125
+    },
+    "England": {
+      "semi_finals": 1.0,
+      "final": 0.464125,
+      "champion": 0.15815
+    },
+    "France": {
+      "semi_finals": 1.0,
+      "final": 0.5577375,
+      "champion": 0.335025
+    },
+    "Spain": {
+      "semi_finals": 1.0,
+      "final": 0.4422625,
+      "champion": 0.2643125
+    }
+  },
+  "match_win_probs": [
+    {
+      "round": "semi_finals",
+      "home": "England",
+      "away": "Argentina",
+      "p_home_win": 0.464125,
+      "p_away_win": 0.535875,
+      "n_sims": 80000
+    },
+    {
+      "round": "semi_finals",
+      "home": "France",
+      "away": "Spain",
+      "p_home_win": 0.557737,
+      "p_away_win": 0.442263,
+      "n_sims": 80000
+    },
+    {
+      "round": "final",
+      "home": "France",
+      "away": "Argentina",
+      "p_home_win": 0.549791,
+      "p_away_win": 0.450209,
+      "n_sims": 23940
+    },
+    {
+      "round": "final",
+      "home": "France",
+      "away": "England",
+      "p_home_win": 0.659606,
+      "p_away_win": 0.340394,
+      "n_sims": 20679
+    },
+    {
+      "round": "final",
+      "home": "Spain",
+      "away": "Argentina",
+      "p_home_win": 0.54448,
+      "p_away_win": 0.45552,
+      "n_sims": 18930
+    },
+    {
+      "round": "final",
+      "home": "Spain",
+      "away": "England",
+      "p_home_win": 0.658805,
+      "p_away_win": 0.341195,
+      "n_sims": 16451
+    }
+  ],
+  "most_likely_bracket": {
+    "semi_finals": [
+      {
+        "home": "France",
+        "away": "Spain",
+        "winner": "France",
+        "score": "4-0"
+      },
+      {
+        "home": "England",
+        "away": "Argentina",
+        "winner": "England",
+        "score": "2-1"
+      }
+    ],
+    "final": {
+      "home": "France",
+      "away": "England",
+      "winner": "France",
+      "score": "3-2"
+    },
+    "champion": "France"
+  },
+  "most_likely_bracket_count": 13640,
+  "most_likely_bracket_fraction": 0.1705,
+  "sample_bracket": {
+    "semi_finals": [
+      {
+        "home": "France",
+        "away": "Spain",
+        "winner": "France",
+        "score": "2-1"
+      },
+      {
+        "home": "England",
+        "away": "Argentina",
+        "winner": "Argentina",
+        "score": "2-3"
+      }
+    ],
+    "final": {
+      "home": "France",
+      "away": "Argentina",
+      "winner": "Argentina",
+      "score": "0-1"
+    },
+    "champion": "Argentina"
+  },
+  "kickoff_date": "2026-07-14",
+  "tournament_config": "/kaggle/working/WorldCupPredictor/config/tournaments/world_cup_2026_semifinals.yaml",
+  "simulation_mode": "knockout_only",
+  "simulation_round": "semi_finals",
+  "elapsed_seconds": 12687.45
+}

@@ -145,8 +145,41 @@
         "correct": 4,
         "total": 4
       }
+    },
+    {
+      "round": "semi_finals",
+      "label": "Semi-finals",
+      "forecast_file": "history/forecast_pre_sf.json",
+      "n_sims": 80000,
+      "completed_at": "2026-07-15",
+      "results": [
+        {
+          "home": "France",
+          "away": "Spain",
+          "winner": "Spain",
+          "score": "0-2",
+          "predicted_winner": "France",
+          "p_home_win": 0.557737,
+          "p_away_win": 0.442263,
+          "correct": false
+        },
+        {
+          "home": "England",
+          "away": "Argentina",
+          "winner": "Argentina",
+          "score": "1-2",
+          "predicted_winner": "Argentina",
+          "p_home_win": 0.464125,
+          "p_away_win": 0.535875,
+          "correct": true
+        }
+      ],
+      "summary": {
+        "correct": 1,
+        "total": 2
+      }
     }
   ],
-  "active_round": "semi_finals",
-  "active_forecast": "wc2026_forecast_sf.json"
+  "active_round": "final",
+  "active_forecast": "wc2026_forecast_final.json"
 }

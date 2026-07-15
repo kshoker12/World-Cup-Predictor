@@ -16,6 +16,7 @@ ROUND_LABELS = {
     "quarter_finals": "Quarter-finals",
     "semi_finals": "Semi-finals",
     "final": "Final",
+    "third_place": "Third-place match",
 }
 
 ADVANCEMENT_COLUMNS = (
@@ -73,6 +74,8 @@ def _is_sf_forecast(data: dict, history: dict | None) -> bool:
 
 def _advancement_columns(data: dict, history: dict | None) -> tuple[tuple[str, str], ...]:
     active = _active_round(data, history)
+    if active == "final":
+        return (("champion", "Win it all"),)
     if active == "semi_finals":
         return tuple(c for c in ADVANCEMENT_COLUMNS if c[0] in ("champion", "final"))
     if active == "quarter_finals":
@@ -82,6 +85,8 @@ def _advancement_columns(data: dict, history: dict | None) -> tuple[tuple[str, s
 
 def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
     active = _active_round(data, history)
+    if active == "final":
+        return ()
     if active == "semi_finals":
         return PATH_ROUNDS_SF
     if active == "quarter_finals":
@@ -92,6 +97,10 @@ def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
 def _meta_line(data: dict, history: dict | None) -> str:
     n_sims = data.get("n_sims", 0)
     active = _active_round(data, history)
+    if data.get("pending"):
+        return "Final & third-place fixtures set · Forecast pending"
+    if active == "final":
+        return f"Based on {n_sims:,} simulations · Final & third-place match"
     if active == "semi_finals":
         return f"Based on {n_sims:,} simulations · Semi-finals"
     if active == "quarter_finals":
@@ -187,6 +196,15 @@ def _r16_match_html(home: str, away: str, p_home: float, p_away: float) -> str:
       {cell(home, p_home, fav_home)}
       <div class="vs">vs</div>
       {cell(away, p_away, not fav_home)}
+    </div>"""
+
+
+def _pending_match_html(home: str, away: str) -> str:
+    return f"""
+    <div class="match">
+      <div class="team">{html.escape(home)}</div>
+      <div class="vs">vs</div>
+      <div class="team">{html.escape(away)}</div>
     </div>"""
 
 
@@ -305,6 +323,24 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
         )
         for m in _round_matches(mwp, active_round)
     )
+    active_matches_html = f"""
+  <h2>{active_label} — who wins?</h2>
+  <p class="section-note">Win chance for each team. Blue = more likely to win.</p>
+  <section>{match_html}</section>"""
+    if active_round == "final":
+        bronze_html = "".join(
+            _r16_match_html(
+                m["home"],
+                m["away"],
+                float(m["p_home_win"]),
+                float(m["p_away_win"]),
+            )
+            for m in _round_matches(mwp, "third_place")
+        )
+        active_matches_html += f"""
+  <h2>Third-place match — who wins?</h2>
+  <p class="section-note">Win chance for each team. Blue = more likely to win.</p>
+  <section>{bronze_html}</section>"""
 
     path_sections: list[str] = []
     for rnd in path_rounds:
@@ -325,6 +361,16 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
             f'<h3 class="path-round">{ROUND_LABELS["final"]}</h3>'
             f'{_path_match_html(final["home"], final["away"], final["winner"], final["score"], ph, pa)}'
         )
+    third_place = br.get("third_place", {})
+    if third_place:
+        ph, pa = _match_prob(
+            mwp, third_place["home"], third_place["away"], "third_place"
+        )
+        path_sections.insert(
+            0,
+            f'<h3 class="path-round">{ROUND_LABELS["third_place"]}</h3>'
+            f'{_path_match_html(third_place["home"], third_place["away"], third_place["winner"], third_place["score"], ph, pa)}',
+        )
 
     path_champion = html.escape(str(br.get("champion", "?")))
     path_pct = f"{frac:.2%}"
@@ -333,6 +379,36 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
         f"{count:,} of {n_sims:,} runs ({path_pct}). "
         f"Most simulations still play out differently; the table above is the main forecast."
     )
+    if data.get("pending"):
+        fixtures = data.get("fixtures", {})
+        final_fixture = fixtures.get("final", [])
+        bronze_fixture = fixtures.get("third_place", [])
+        forecast_sections = f"""
+  <h2>Final forecast pending</h2>
+  <p class="section-note">The 80,000-simulation final forecast is being prepared.</p>
+  <h2>Final</h2>
+  <section>{_pending_match_html(*final_fixture)}</section>
+  <h2>Third-place match</h2>
+  <section>{_pending_match_html(*bronze_fixture)}</section>"""
+    else:
+        forecast_sections = f"""
+  <h2>Who goes how far?</h2>
+  <p class="section-note">
+    How often each team wins the cup or reaches each round. Numbers are percentages.
+  </p>
+  <table class="outlook-table">
+    <thead><tr><th>Team</th>{outlook_header}</tr></thead>
+    <tbody>{outlook_rows}</tbody>
+  </table>
+
+{active_matches_html}
+
+  <h2>{"Most likely results" if active_round == "final" else "Most likely path"}</h2>
+  <p class="section-note">{path_note}</p>
+  <section class="path-section">
+    {"".join(path_sections)}
+    <div class="path-champion">Champion on this path: <strong>{path_champion}</strong></div>
+  </section>"""
 
     page = f"""<!DOCTYPE html>
 <html lang="en">
@@ -477,25 +553,7 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
   <h1>WC 2026 Knockout Forecast</h1>
   <p class="meta">{_meta_line(data, history)}</p>
 
-  <h2>Who goes how far?</h2>
-  <p class="section-note">
-    How often each team wins the cup or reaches each round. Numbers are percentages.
-  </p>
-  <table class="outlook-table">
-    <thead><tr><th>Team</th>{outlook_header}</tr></thead>
-    <tbody>{outlook_rows}</tbody>
-  </table>
-
-  <h2>{active_label} — who wins each game?</h2>
-  <p class="section-note">Win chance for each team in this round. Blue = more likely to win.</p>
-  <section>{match_html}</section>
-
-  <h2>Most likely path</h2>
-  <p class="section-note">{path_note}</p>
-  <section class="path-section">
-    {"".join(path_sections)}
-    <div class="path-champion">Champion on this path: <strong>{path_champion}</strong></div>
-  </section>
+{forecast_sections}
 {history_sections}
 
   <p class="footer">
