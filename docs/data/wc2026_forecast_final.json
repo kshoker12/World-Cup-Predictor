@@ -1,13 +1,74 @@
 {
-  "pending": true,
-  "n_sims": 0,
-  "simulation_round": "final",
-  "fixtures": {
-    "final": ["Spain", "Argentina"],
-    "third_place": ["France", "England"]
+  "n_sims": 80000,
+  "champion_probs": {
+    "Spain": 0.55915,
+    "Argentina": 0.44085
   },
-  "champion_probs": {},
-  "advancement_probs": {},
-  "match_win_probs": [],
-  "most_likely_bracket": {}
+  "advancement_probs": {
+    "Spain": {
+      "final": 1.0,
+      "champion": 0.55915
+    },
+    "Argentina": {
+      "final": 1.0,
+      "champion": 0.44085
+    }
+  },
+  "match_win_probs": [
+    {
+      "round": "final",
+      "home": "Spain",
+      "away": "Argentina",
+      "p_home_win": 0.55915,
+      "p_away_win": 0.44085,
+      "n_sims": 80000
+    },
+    {
+      "round": "third_place",
+      "home": "France",
+      "away": "England",
+      "p_home_win": 0.66485,
+      "p_away_win": 0.33515,
+      "n_sims": 80000
+    }
+  ],
+  "most_likely_bracket": {
+    "third_place": {
+      "home": "France",
+      "away": "England",
+      "winner": "France",
+      "score": "2-1"
+    },
+    "final": {
+      "home": "Spain",
+      "away": "Argentina",
+      "winner": "Spain",
+      "score": "2-1"
+    },
+    "champion": "Spain",
+    "bronze_winner": "France"
+  },
+  "most_likely_bracket_count": 29842,
+  "most_likely_bracket_fraction": 0.373025,
+  "sample_bracket": {
+    "third_place": {
+      "home": "France",
+      "away": "England",
+      "winner": "France",
+      "score": "2-1"
+    },
+    "final": {
+      "home": "Spain",
+      "away": "Argentina",
+      "winner": "Argentina",
+      "score": "2-3"
+    },
+    "champion": "Argentina",
+    "bronze_winner": "France"
+  },
+  "kickoff_date": "2026-07-18",
+  "tournament_config": "/kaggle/working/WorldCupPredictor/config/tournaments/world_cup_2026_finals.yaml",
+  "simulation_mode": "finals",
+  "simulation_round": "final",
+  "elapsed_seconds": 11831.71
 }
