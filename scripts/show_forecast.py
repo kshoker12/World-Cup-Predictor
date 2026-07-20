@@ -97,6 +97,9 @@ def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
 def _meta_line(data: dict, history: dict | None) -> str:
     n_sims = data.get("n_sims", 0)
     active = _active_round(data, history)
+    if data.get("completed"):
+        champion = data.get("champion") or (history or {}).get("champion", "?")
+        return f"Tournament complete · Champion: {champion}"
     if data.get("pending"):
         return "Final & third-place fixtures set · Forecast pending"
     if active == "final":
@@ -379,7 +382,17 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
         f"{count:,} of {n_sims:,} runs ({path_pct}). "
         f"Most simulations still play out differently; the table above is the main forecast."
     )
-    if data.get("pending"):
+    if data.get("completed"):
+        champion = html.escape(
+            str(data.get("champion") or (history or {}).get("champion", "?"))
+        )
+        forecast_sections = f"""
+  <h2>Champion</h2>
+  <p class="section-note">Spain won the 2026 World Cup, 1–0 after extra time against Argentina.</p>
+  <section class="path-section">
+    <div class="path-champion">World champions: <strong>{champion}</strong></div>
+  </section>"""
+    elif data.get("pending"):
         fixtures = data.get("fixtures", {})
         final_fixture = fixtures.get("final", [])
         bronze_fixture = fixtures.get("third_place", [])

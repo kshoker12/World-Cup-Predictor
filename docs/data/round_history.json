@@ -178,8 +178,42 @@
         "correct": 1,
         "total": 2
       }
+    },
+    {
+      "round": "final",
+      "label": "Final & third place",
+      "forecast_file": "history/forecast_pre_final.json",
+      "n_sims": 80000,
+      "completed_at": "2026-07-19",
+      "results": [
+        {
+          "home": "Spain",
+          "away": "Argentina",
+          "winner": "Spain",
+          "score": "1-0 (AET)",
+          "predicted_winner": "Spain",
+          "p_home_win": 0.55915,
+          "p_away_win": 0.44085,
+          "correct": true
+        },
+        {
+          "home": "France",
+          "away": "England",
+          "winner": "England",
+          "score": "4-6",
+          "predicted_winner": "France",
+          "p_home_win": 0.66485,
+          "p_away_win": 0.33515,
+          "correct": false
+        }
+      ],
+      "summary": {
+        "correct": 1,
+        "total": 2
+      }
     }
   ],
   "active_round": "final",
-  "active_forecast": "wc2026_forecast_final.json"
+  "active_forecast": "wc2026_forecast_final.json",
+  "champion": "Spain"
 }
