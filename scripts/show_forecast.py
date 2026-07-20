@@ -94,6 +94,36 @@ def _path_rounds(data: dict, history: dict | None) -> tuple[str, ...]:
     return PATH_ROUNDS_R16
 
 
+def _knockout_accuracy(history: dict | None) -> tuple[int, int]:
+    if not history:
+        return 0, 0
+    correct = total = 0
+    for rnd in history.get("rounds", []):
+        summary = rnd.get("summary", {})
+        correct += int(summary.get("correct", 0))
+        total += int(summary.get("total", 0))
+    return correct, total
+
+
+def _knockout_summary_html(history: dict | None) -> str:
+    correct, total = _knockout_accuracy(history)
+    if total <= 0:
+        return ""
+    pct = correct / total
+    breakdown = "".join(
+        f"<li>{html.escape(rnd.get('label', ROUND_LABELS.get(rnd.get('round', ''), 'Round')))}: "
+        f"{rnd['summary']['correct']}/{rnd['summary']['total']}</li>"
+        for rnd in history.get("rounds", [])
+        if rnd.get("summary", {}).get("total", 0) > 0
+    )
+    return f"""
+  <section class="knockout-summary">
+    <div class="summary-headline">{correct}/{total} knockout matches correct ({pct:.0%})</div>
+    <p class="summary-note">Winner picked before each match from 80,000 simulations.</p>
+    <ul class="summary-breakdown">{breakdown}</ul>
+  </section>"""
+
+
 def _meta_line(data: dict, history: dict | None) -> str:
     n_sims = data.get("n_sims", 0)
     active = _active_round(data, history)
@@ -455,6 +485,30 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
       letter-spacing: 0.04em;
     }}
     .meta {{ color: #8899a6; font-size: 0.9rem; margin-bottom: 0.5rem; }}
+    .knockout-summary {{
+      margin: 1rem 0 1.5rem;
+      padding: 1rem 1.1rem;
+      background: #1a1f26;
+      border: 1px solid #2f3336;
+      border-radius: 8px;
+    }}
+    .summary-headline {{
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e7e9ea;
+    }}
+    .summary-note {{
+      margin: 0.35rem 0 0.65rem;
+      color: #8899a6;
+      font-size: 0.88rem;
+    }}
+    .summary-breakdown {{
+      margin: 0;
+      padding-left: 1.1rem;
+      color: #8899a6;
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }}
     .section-note {{
       color: #8899a6;
       font-size: 0.88rem;
@@ -565,7 +619,7 @@ def write_html(data: dict, out_path: Path, history: dict | None = None) -> None:
 <body>
   <h1>WC 2026 Knockout Forecast</h1>
   <p class="meta">{_meta_line(data, history)}</p>
-
+{_knockout_summary_html(history)}
 {forecast_sections}
 {history_sections}
 
